@@ -1,2 +1,9 @@
 [workspace]
 members = ["core", "gui/src-tauri"]
+
+[profile.release]
+panic = "abort"
+lto = true
+incremental = true
+strip = true
+opt-level = "s"
