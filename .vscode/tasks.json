@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pylon: Build Core (Debug)",
+      "type": "cargo",
+      "command": "build",
+      "args": ["-p", "pylon_core"],
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "Pylon: Build Core (Release)",
+      "type": "cargo",
+      "command": "build",
+      "args": ["-p", "pylon_core", "--release"],
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "Pylon: Run GUI",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["workspace", "gui", "tauri", "dev"]
+    },
+    {
+      "label": "Pylon: Build GUI",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["workspace", "gui", "tauri", "build"]
+    }
+  ]
+}
