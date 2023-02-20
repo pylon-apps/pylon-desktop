@@ -1,6 +1,11 @@
 [workspace]
 members = ["core", "gui/src-tauri"]
 
+[workspace.package]
+authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
+edition = "2021"
+version = "0.1.0"
+
 [profile.release]
 panic = "abort"
 lto = true
