@@ -4,3 +4,5 @@ version = { workspace = true }
 edition = { workspace = true }
 
 [dependencies]
+magic-wormhole = "0.6.0"
+thiserror = "1.0.38"
