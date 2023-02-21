@@ -26,7 +26,7 @@ type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>>;
 #[derive(Debug, Error)]
 pub enum PylonError {
     /// Wormhole code generation failed for some reason.
-    /// Possibly because the Pylon was already initialized and is in sender/receiver mode.
+    /// Possibly because the underlying wormhole has already been initialized.
     #[error("Error generating wormhole code: {}", _0)]
     CodegenError(Box<str>),
     /// An error occured with the underlying wormhole library that we aren't explicitly matching against.
@@ -45,8 +45,7 @@ pub enum PylonError {
 /// High-level wrapper over a magic-wormhole that allows for secure file-transfers.
 pub struct Pylon {
     handshake: Option<Box<Handshake>>,
-    sender: Option<Wormhole>,
-    receiver: Option<Wormhole>,
+    wormhole: Option<Wormhole>,
     config: AppConfig<AppVersion>,
 }
 
@@ -55,8 +54,7 @@ impl Pylon {
     pub fn new() -> Self {
         Self {
             handshake: None,
-            sender: None,
-            receiver: None,
+            wormhole: None,
             config: AppConfig {
                 id: AppID(Cow::from(APP_ID)),
                 rendezvous_url: Cow::from(DEFAULT_RENDEZVOUS_SERVER),
@@ -78,15 +76,9 @@ impl Pylon {
             ));
         }
 
-        if let Some(_) = &self.sender {
+        if let Some(_) = &self.wormhole {
             return Err(PylonError::CodegenError(
-                String::from("The current Pylon is already in sender mode").into_boxed_str(),
-            ));
-        }
-
-        if let Some(_) = &self.receiver {
-            return Err(PylonError::CodegenError(
-                String::from("The current Pylon is in receiver mode").into_boxed_str(),
+                String::from("The current Pylon has already been initialized").into_boxed_str(),
             ));
         }
 
