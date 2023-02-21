@@ -52,12 +52,8 @@ pub enum PylonError {
         TransferError,
     ),
     /// An error occured with the underlying wormhole library that we aren't explicitly matching against.
-    #[error("An internal error occured")]
-    InternalError(
-        #[from]
-        #[source]
-        WormholeError,
-    ),
+    #[error(transparent)]
+    InternalError(#[from] WormholeError),
     /// Generic error messages.
     #[error("An error occured: {0}")]
     Error(Box<str>),
