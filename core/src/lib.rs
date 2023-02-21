@@ -41,6 +41,23 @@ pub enum PylonError {
     Error(Box<str>),
 }
 
+/// Configuration values for the Pylon.
+pub struct PylonConfig {
+    /// The ID of your application.
+    pub id: String,
+    /// The wormhole rendezvous server's URL.
+    pub rendezvous_url: String,
+}
+
+impl Default for PylonConfig {
+    fn default() -> Self {
+        Self {
+            id: APP_ID.into(),
+            rendezvous_url: DEFAULT_RENDEZVOUS_SERVER.into(),
+        }
+    }
+}
+
 // TODO: improve documentation
 /// High-level wrapper over a magic-wormhole that allows for secure file-transfers.
 pub struct Pylon {
@@ -50,14 +67,19 @@ pub struct Pylon {
 }
 
 impl Pylon {
-    /// Creates a new Pylon with sane defaults.
-    pub fn new() -> Self {
+    // TODO: add example(s)
+    /// Creates a new Pylon using the specified config.
+    ///
+    /// # Arguments
+    ///
+    /// * `config` - The configuration to use. (Can use `Default::default()`).
+    pub fn new(config: PylonConfig) -> Self {
         Self {
             handshake: None,
             wormhole: None,
             config: AppConfig {
-                id: AppID(Cow::from(APP_ID)),
-                rendezvous_url: Cow::from(DEFAULT_RENDEZVOUS_SERVER),
+                id: AppID(Cow::from(config.id)),
+                rendezvous_url: Cow::from(config.rendezvous_url),
                 app_version: AppVersion {},
             },
         }
