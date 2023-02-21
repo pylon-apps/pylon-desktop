@@ -5,6 +5,7 @@ members = ["core", "gui/src-tauri"]
 authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
 edition = "2021"
 version = "0.2.0"
+rust-version = "1.64.0"
 
 [profile.release]
 panic = "abort"
