@@ -27,7 +27,7 @@ type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>>;
 pub enum PylonError {
     /// Wormhole code generation failed for some reason.
     /// Possibly because the underlying wormhole has already been initialized.
-    #[error("Error generating wormhole code: {}", _0)]
+    #[error("Error generating wormhole code: {0}")]
     CodegenError(Box<str>),
     /// An error occured with the underlying wormhole library that we aren't explicitly matching against.
     #[error("An internal error occured")]
@@ -37,7 +37,7 @@ pub enum PylonError {
         WormholeError,
     ),
     /// Generic error messages.
-    #[error("An error occured: {}", _0)]
+    #[error("An error occured: {0}")]
     Error(Box<str>),
 }
 
