@@ -14,7 +14,7 @@
       "profile": "default"
     },
     "ghcr.io/akhildevelops/devcontainer-features/apt:0": {
-      "PACKAGES": "pkg-config,libgtk-3-dev,libsoup2.4-dev,libjavascriptcoregtk-4.0-dev,libwebkit2gtk-4.0-dev"
+      "PACKAGES": "pkg-config,libgtk-3-dev,libsoup2.4-dev,libjavascriptcoregtk-4.0-dev,libwebkit2gtk-4.0-dev,mold"
     }
   }
 
