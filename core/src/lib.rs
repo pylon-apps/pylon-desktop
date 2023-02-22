@@ -11,7 +11,7 @@ use std::future::Future;
 use std::net::SocketAddr;
 use std::path::PathBuf;
 
-use futures::AsyncRead;
+use futures::{AsyncRead, AsyncWrite};
 use magic_wormhole::rendezvous::DEFAULT_RENDEZVOUS_SERVER;
 use magic_wormhole::transfer::{self, AppVersion, ReceiveRequest, TransferError};
 use magic_wormhole::transit::{
@@ -214,6 +214,44 @@ impl Pylon {
             }
         };
         self.transfer_request = request;
+
+        Ok(())
+    }
+
+    // TODO: add example(s)
+    /// Accepts a file transfer and receives a file over the wormhole network from the sender Pylon.
+    ///
+    /// # Arguments
+    ///
+    /// * `file` - The file writer for the destination file.
+    /// * `progress_handler` - Callback function that accepts the number of bytes received and the total number of bytes
+    ///                        to receive.
+    /// * `cancel_handler` - Callback function to request cancellation of the file transfer.
+    pub async fn receive_file<F, P, C>(
+        &mut self,
+        file: &mut F,
+        progress_handler: P,
+        cancel_handler: C,
+    ) -> Result<(), PylonError>
+    where
+        F: AsyncWrite + Unpin,
+        P: FnMut(u64, u64) + 'static,
+        C: Future<Output = ()>,
+    {
+        // TODO: allow caller to specify transit abilities
+        let transit_handler = |_: TransitInfo, _: SocketAddr| {};
+        match self.transfer_request.take() {
+            Some(r) => {
+                // TODO: allow caller to accept or reject transfer
+                r.accept(transit_handler, progress_handler, file, cancel_handler)
+                    .await?;
+            }
+            None => {
+                return Err(PylonError::Error(
+                    "There is currently no active transfer request".into(),
+                ));
+            }
+        }
 
         Ok(())
     }
