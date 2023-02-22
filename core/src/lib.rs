@@ -17,13 +17,13 @@ use magic_wormhole::transfer::{self, AppVersion, ReceiveRequest, TransferError};
 use magic_wormhole::transit::{
     Abilities, RelayHint, RelayHintParseError, TransitInfo, DEFAULT_RELAY_SERVER,
 };
-use magic_wormhole::{AppConfig, AppID, Wormhole, WormholeError};
+use magic_wormhole::{AppConfig, AppID, Code, Wormhole, WormholeError};
 use thiserror::Error;
 
 use consts::APP_ID;
 
 /// Awaitable object that will perform the client-client handshake and yield the wormhole object on success.
-type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>> + Send + Sync;
+type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>> + Unpin + Send + Sync;
 
 /// Custom error type for the various errors a Pylon may encounter.
 ///
@@ -131,7 +131,7 @@ impl Pylon {
 
         let (welcome, handshake) =
             Wormhole::connect_without_code(self.config.clone(), code_length).await?;
-        self.handshake = Some(Box::new(handshake));
+        self.handshake = Some(Box::new(Box::pin(handshake)));
 
         Ok(welcome.code.0)
     }
@@ -170,19 +170,26 @@ impl Pylon {
             [self.relay_url.parse().unwrap()],
         )?];
 
-        let sender = match self.wormhole.take() {
-            None => return Err(PylonError::Error("Wormhole not initialized".into())),
-            Some(wh) => transfer::send_file(
-                wh,
-                relay_hints,
-                file,
-                file_name,
-                file_size,
-                transit_abilities,
-                transit_handler,
-                progress_handler,
-                cancel_handler,
-            ),
+        let sender = match self.handshake.take() {
+            None => {
+                return Err(PylonError::Error(
+                    "There is currently no active handshake".into(),
+                ))
+            }
+            Some(h) => {
+                let wh = h.await?;
+                transfer::send_file(
+                    wh,
+                    relay_hints,
+                    file,
+                    file_name,
+                    file_size,
+                    transit_abilities,
+                    transit_handler,
+                    progress_handler,
+                    cancel_handler,
+                )
+            }
         };
         sender.await?;
 
@@ -194,9 +201,11 @@ impl Pylon {
     ///
     /// # Arguments
     ///
+    /// * `code` - The wormhole code to authenticate the connection.
     /// * `cancel_handler` - Callback function to request cancellation of the file transfer.
     pub async fn request_file<C: Future<Output = ()>>(
         &mut self,
+        code: String,
         cancel_handler: C,
     ) -> Result<(), PylonError> {
         // TODO: allow caller to specify transit abilities and relay hints
@@ -207,12 +216,9 @@ impl Pylon {
             [self.relay_url.parse().unwrap()],
         )?];
 
-        let request = match self.wormhole.take() {
-            None => return Err(PylonError::Error("Wormhole not initialized".into())),
-            Some(wh) => {
-                transfer::request_file(wh, relay_hints, transit_abilities, cancel_handler).await?
-            }
-        };
+        let (_, wh) = Wormhole::connect_with_code(self.config.clone(), Code(code)).await?;
+        let request =
+            transfer::request_file(wh, relay_hints, transit_abilities, cancel_handler).await?;
         self.transfer_request = request;
 
         Ok(())
