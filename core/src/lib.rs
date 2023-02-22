@@ -23,7 +23,7 @@ use thiserror::Error;
 use consts::APP_ID;
 
 /// Awaitable object that will perform the client-client handshake and yield the wormhole object on success.
-type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>>;
+type Handshake = dyn Future<Output = Result<Wormhole, WormholeError>> + Send + Sync;
 
 /// Custom error type for the various errors a Pylon may encounter.
 ///
