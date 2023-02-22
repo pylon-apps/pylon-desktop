@@ -83,7 +83,6 @@ impl Default for PylonConfig {
 /// High-level wrapper over a magic-wormhole that allows for secure file-transfers.
 pub struct Pylon {
     handshake: Option<Box<Handshake>>,
-    wormhole: Option<Wormhole>,
     transfer_request: Option<ReceiveRequest>,
     relay_url: String,
     config: AppConfig<AppVersion>,
@@ -99,7 +98,6 @@ impl Pylon {
     pub fn new(config: PylonConfig) -> Self {
         Self {
             handshake: None,
-            wormhole: None,
             transfer_request: None,
             relay_url: config.relay_url,
             config: AppConfig {
@@ -120,12 +118,6 @@ impl Pylon {
         if let Some(_) = &self.handshake {
             return Err(PylonError::CodegenError(
                 "The current Pylon already has a pending handshake".into(),
-            ));
-        }
-
-        if let Some(_) = &self.wormhole {
-            return Err(PylonError::CodegenError(
-                "The current Pylon has already been initialized".into(),
             ));
         }
 
