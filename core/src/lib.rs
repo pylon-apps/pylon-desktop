@@ -119,13 +119,13 @@ impl Pylon {
     pub async fn gen_code(&mut self, code_length: usize) -> Result<String, PylonError> {
         if let Some(_) = &self.handshake {
             return Err(PylonError::CodegenError(
-                String::from("The current Pylon already has a pending handshake").into_boxed_str(),
+                "The current Pylon already has a pending handshake".into(),
             ));
         }
 
         if let Some(_) = &self.wormhole {
             return Err(PylonError::CodegenError(
-                String::from("The current Pylon has already been initialized").into_boxed_str(),
+                "The current Pylon has already been initialized".into(),
             ));
         }
 
