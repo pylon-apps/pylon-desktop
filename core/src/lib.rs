@@ -18,6 +18,7 @@ use magic_wormhole::transit::{
     Abilities, RelayHint, RelayHintParseError, TransitInfo, DEFAULT_RELAY_SERVER,
 };
 use magic_wormhole::{AppConfig, AppID, Code, Wormhole, WormholeError};
+use serde::Serialize;
 use thiserror::Error;
 
 use consts::APP_ID;
@@ -57,6 +58,15 @@ pub enum PylonError {
     /// Generic error messages.
     #[error("An error occured: {0}")]
     Error(Box<str>),
+}
+
+impl Serialize for PylonError {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(self.to_string().as_ref())
+    }
 }
 
 /// Configuration values for the Pylon.
