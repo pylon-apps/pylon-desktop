@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "pylon_gui",
-    "version": "0.0.0"
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -61,9 +61,11 @@
       {
         "fullscreen": false,
         "height": 600,
+        "minHeight": 600,
         "resizable": true,
         "title": "Pylon",
-        "width": 800
+        "width": 800,
+        "minWidth": 800
       }
     ]
   }
