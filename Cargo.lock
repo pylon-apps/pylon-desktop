@@ -2483,6 +2483,7 @@ dependencies = [
  "magic-wormhole",
  "serde",
  "thiserror",
+ "url",
 ]
 
 [[package]]

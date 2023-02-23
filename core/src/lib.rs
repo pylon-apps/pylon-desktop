@@ -20,6 +20,7 @@ use magic_wormhole::transit::{
 use magic_wormhole::{AppConfig, AppID, Code, Wormhole, WormholeError};
 use serde::Serialize;
 use thiserror::Error;
+use url::ParseError;
 
 use consts::APP_ID;
 
@@ -44,6 +45,10 @@ pub enum PylonError {
         #[source]
         RelayHintParseError,
     ),
+    /// Error parsing a URL. Eg: rendezvous server URL or relay server URL.
+    /// This is just a wrapper over the `url` library's `ParseError`.
+    #[error(transparent)]
+    UrlParseError(#[from] ParseError),
     /// Error occured during the transfer.
     /// This is just a wrapper over the underlying womhole library's error of the same name.
     #[error("Error occured during transfer")]
@@ -166,11 +171,7 @@ impl Pylon {
         // TODO: allow caller to specify transit handler, abilities and relay hints
         let transit_handler = |_: TransitInfo, _: SocketAddr| {};
         let transit_abilities = Abilities::ALL_ABILITIES;
-        // TODO: don't unwrap
-        let relay_hints = vec![RelayHint::from_urls(
-            None,
-            [self.relay_url.parse().unwrap()],
-        )?];
+        let relay_hints = vec![RelayHint::from_urls(None, [self.relay_url.parse()?])?];
 
         let sender = match self.handshake.take() {
             None => {
@@ -212,11 +213,7 @@ impl Pylon {
     ) -> Result<(), PylonError> {
         // TODO: allow caller to specify transit abilities and relay hints
         let transit_abilities = Abilities::ALL_ABILITIES;
-        // TODO: don't unwrap
-        let relay_hints = vec![RelayHint::from_urls(
-            None,
-            [self.relay_url.parse().unwrap()],
-        )?];
+        let relay_hints = vec![RelayHint::from_urls(None, [self.relay_url.parse()?])?];
 
         let (_, wh) = Wormhole::connect_with_code(self.config.clone(), Code(code)).await?;
         let request =
