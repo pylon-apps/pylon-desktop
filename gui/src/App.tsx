@@ -111,7 +111,7 @@ function App(): any {
               background: colorBgContainer,
             }}
           >
-            {/* This is where our other views would be rendered */}
+            {/* This is where our views would be rendered */}
             <Empty
               image={Empty.PRESENTED_IMAGE_SIMPLE}
               description={<span>There's nothing here yet. Stay tuned!</span>}
