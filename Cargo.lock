@@ -2488,7 +2488,7 @@ dependencies = [
 
 [[package]]
 name = "pylon_gui"
-version = "0.0.0"
+version = "0.1.2"
 dependencies = [
  "serde",
  "serde_json",
