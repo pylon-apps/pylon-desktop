@@ -11,7 +11,9 @@ import {
 import type { MenuProps } from "antd";
 import { Layout, Menu, Empty, theme } from "antd";
 
-const { Header, Content, Footer, Sider } = Layout;
+import "./App.css";
+
+const { Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -85,12 +87,6 @@ function App(): any {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-          }}
-        />
         <Menu
           theme="dark"
           defaultSelectedKeys={["dashboard"]}
@@ -100,17 +96,8 @@ function App(): any {
       </Sider>
 
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-
         <Content style={{ margin: "0 0" }}>
-          <div
-            style={{
-              padding: 24,
-              margin: 24,
-              minHeight: 400,
-              background: colorBgContainer,
-            }}
-          >
+          <div className="View">
             {/* This is where our views would be rendered */}
             <Empty
               image={Empty.PRESENTED_IMAGE_SIMPLE}
@@ -118,10 +105,6 @@ function App(): any {
             />
           </div>
         </Content>
-
-        <Footer style={{ textAlign: "center" }}>
-          Created with <HeartTwoTone twoToneColor="magenta" /> by Nikhil Prabhu
-        </Footer>
       </Layout>
     </Layout>
   );
