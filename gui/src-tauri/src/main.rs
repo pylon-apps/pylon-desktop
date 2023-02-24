@@ -15,6 +15,7 @@ fn is_release_mode() -> bool {
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_window_state::Builder::default().build())
         .invoke_handler(tauri::generate_handler![is_release_mode])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
