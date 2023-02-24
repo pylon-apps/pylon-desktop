@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { invoke } from "@tauri-apps/api";
 import {
   DashboardOutlined,
   RocketOutlined,
@@ -65,6 +66,15 @@ function App(): any {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  // Disable right-click context menu when running in production.
+  invoke("is_release_mode").then((res) => {
+    if (res as boolean) {
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+    }
+  });
 
   // TODO: don't inline styles
   return (
