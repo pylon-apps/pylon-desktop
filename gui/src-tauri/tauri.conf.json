@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "pylon_gui",
+    "productName": "Pylon Desktop",
     "version": "0.1.1"
   },
   "tauri": {
