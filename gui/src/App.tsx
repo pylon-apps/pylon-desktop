@@ -97,7 +97,7 @@ function App(): any {
 
       <Layout className="site-layout">
         <Content style={{ margin: "0 0" }}>
-          <div className="View">
+          <div className="View-container">
             {/* This is where our views would be rendered */}
             <Empty
               image={Empty.PRESENTED_IMAGE_SIMPLE}
