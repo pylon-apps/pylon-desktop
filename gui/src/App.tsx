@@ -5,13 +5,14 @@ import {
   RocketOutlined,
   HistoryOutlined,
   SettingOutlined,
-  HeartTwoTone,
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, Empty, theme } from "antd";
 
 import "./App.css";
+import reactLogo from "./assets/react.svg";
+import Dashboard from "./views/Dashboard/Dashboard";
 
 const { Content, Sider } = Layout;
 
@@ -99,10 +100,8 @@ function App(): any {
         <Content style={{ margin: "0 0" }}>
           <div className="View-container">
             {/* This is where our views would be rendered */}
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              description={<span>There's nothing here yet. Stay tuned!</span>}
-            />
+            {/* TODO: Use custom logo */}
+            <Dashboard logo={reactLogo} />
           </div>
         </Content>
       </Layout>
