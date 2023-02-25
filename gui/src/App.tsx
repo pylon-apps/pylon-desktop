@@ -47,20 +47,6 @@ function getMenuItem(
 }
 
 /**
- * The menu items to display in the sidebar of our app
- * @date 2/23/2023 - 10:58:00 PM
- *
- * @type {MenuItem[]}
- */
-const items: MenuItem[] = [
-  getMenuItem("Dashboard", "dashboard", <DashboardOutlined />),
-  getMenuItem("Active Transfers", "active_transfers", <RocketOutlined />),
-  getMenuItem("History", "history", <HistoryOutlined />),
-  getMenuItem("Settings", "settings", <SettingOutlined />),
-  getMenuItem("About", "about", <InfoCircleOutlined />),
-];
-
-/**
  * Primary component of our app
  *
  * This component will encapsulate and render the various other views of our app
@@ -71,6 +57,20 @@ const items: MenuItem[] = [
 function App(): any {
   const [collapsed, setCollapsed] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
+
+  /**
+   * The menu items to display in the sidebar of our app
+   * @date 2/23/2023 - 10:58:00 PM
+   *
+   * @type {MenuItem[]}
+   */
+  const items: MenuItem[] = [
+    getMenuItem("Dashboard", "dashboard", <DashboardOutlined />),
+    getMenuItem("Active Transfers", "active_transfers", <RocketOutlined />),
+    getMenuItem("History", "history", <HistoryOutlined />),
+    getMenuItem("Settings", "settings", <SettingOutlined />),
+    getMenuItem("About", "about", <InfoCircleOutlined />),
+  ];
 
   /**
    * The available views that can be displayed in the app.
