@@ -2497,7 +2497,7 @@ dependencies = [
 
 [[package]]
 name = "pylon_gui"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "pylon_core",
  "serde",

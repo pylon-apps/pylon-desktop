@@ -1,6 +1,6 @@
 [package]
 name = "pylon_gui"
-version = "0.5.0"
+version = "0.6.0"
 description = " Cross-platform, secure file transfer desktop application"
 authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
 license = "GPL-3.0"
