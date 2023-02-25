@@ -93,7 +93,7 @@ function App(): any {
    * @type {Map<string, ReactElement>} A map containing the unique key identifying the view, along with the view component.
    */
   const views: Map<string, ReactElement> = new Map([
-    ["dashboard", <Dashboard logo={reactLogo} />],
+    ["dashboard", <Dashboard appLogo={reactLogo} />],
     ["active_transfers", <ActiveTransfers />],
     ["history", <History />],
     ["settings", <Settings />],

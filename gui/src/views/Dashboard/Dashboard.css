@@ -1,3 +1,8 @@
 .Dashboard-logo {
-	width: 100%;
+  width: 20em;
+  margin: 2em;
+}
+
+.Dashboard-button {
+  margin: 1em;
 }

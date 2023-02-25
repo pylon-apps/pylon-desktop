@@ -1,10 +1,9 @@
 import { HeartTwoTone } from "@ant-design/icons";
-import { Col, Row, Layout, Typography } from "antd";
+import { Col, Row, Layout, Typography, Descriptions } from "antd";
 
 import "./About.css";
 
 const { Title, Text } = Typography;
-const { Footer } = Layout;
 
 interface AboutProps {
   logo?: string;
@@ -19,7 +18,7 @@ function About(props: AboutProps) {
   return (
     <div className="About">
       <Row justify="space-around" align="middle">
-        <Col span={24}>
+        <Col span="flex">
           <img className="About-logo" src={props.logo} alt="logo" />
         </Col>
       </Row>
@@ -27,24 +26,23 @@ function About(props: AboutProps) {
         <Title>{props.appName}</Title>
       </Row>
       <Row justify="space-around" align="middle">
-        <Col span={24}>
-          <Text strong>Core version: </Text>
-          {props.coreVersion}
-        </Col>
-        <Col span={24}>
-          <Text strong>GUI version: </Text>
-          {props.guiVersion}
-        </Col>
-        <Col span={24}>
-          <Text strong>Build date: </Text>
-          {props.buildDate}
-        </Col>
+        <Descriptions column={1} bordered>
+          <Descriptions.Item label="Core Version">
+            {props.coreVersion}
+          </Descriptions.Item>
+          <Descriptions.Item label="GUI Version">
+            {props.guiVersion}
+          </Descriptions.Item>
+          <Descriptions.Item label="Build Date">
+            {props.buildDate}
+          </Descriptions.Item>
+        </Descriptions>
       </Row>
-      <Footer>
-        <Text strong keyboard>
+      <Row justify="space-around" align="middle">
+        <Text className="About-footer" strong keyboard>
           Made with <HeartTwoTone twoToneColor="magenta" /> by {props.author}
         </Text>
-      </Footer>
+      </Row>
     </div>
   );
 }

@@ -1,8 +1,12 @@
 .About {
-  text-align: center;
+  min-height: 100vh;
 }
 
 .About-logo {
-  width: 20em;
+  width: 10em;
   margin: 2em;
+}
+
+.About-footer {
+  margin: 3em;
 }
