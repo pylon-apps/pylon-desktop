@@ -1,8 +1,5 @@
 .View-container {
-	padding: 24;
-	min-height: 100vh;
-	overflow-y: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  padding: 24;
+  min-height: 100vh;
+  overflow-y: auto;
 }
