@@ -1,3 +1,10 @@
+.About {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .About-logo {
   width: 10em;
 }

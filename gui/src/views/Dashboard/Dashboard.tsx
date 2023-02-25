@@ -9,7 +9,7 @@ interface DashboardProps {
 
 function Dashboard(props: DashboardProps) {
   return (
-    <div>
+    <div className="Dashboard">
       <Space
         direction="vertical"
         align="center"

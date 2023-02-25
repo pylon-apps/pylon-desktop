@@ -16,7 +16,7 @@ interface AboutProps {
 
 function About(props: AboutProps) {
   return (
-    <div>
+    <div className="About">
       <Space
         direction="vertical"
         align="center"

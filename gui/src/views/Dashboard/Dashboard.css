@@ -1,3 +1,10 @@
+.Dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .Dashboard-logo {
   width: 20em;
 }
