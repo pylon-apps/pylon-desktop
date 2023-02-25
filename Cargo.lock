@@ -2499,6 +2499,7 @@ dependencies = [
 name = "pylon_gui"
 version = "0.4.0"
 dependencies = [
+ "pylon_core",
  "serde",
  "serde_json",
  "tauri",

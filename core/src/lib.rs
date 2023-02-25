@@ -4,7 +4,7 @@
 //!
 //! [`magic-wormhole`]: https://crates.io/crates/magic-wormhole
 
-mod consts;
+pub mod consts;
 
 use std::borrow::Cow;
 use std::future::Future;

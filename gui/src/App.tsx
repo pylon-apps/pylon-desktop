@@ -12,6 +12,7 @@ import { Layout, Menu, theme } from "antd";
 
 import "./App.css";
 import reactLogo from "./assets/react.svg";
+import { version } from "../package.json";
 import Dashboard from "./views/Dashboard/Dashboard";
 import ActiveTransfers from "./views/ActiveTransfers/ActiveTransfers";
 import History from "./views/History/History";
@@ -57,6 +58,19 @@ function getMenuItem(
 function App(): any {
   const [collapsed, setCollapsed] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
+  const [coreVersion, setCoreVersion] = useState("");
+
+  // Get Pylon core library version.
+  invoke("core_version").then((version) => setCoreVersion(version as string));
+
+  // Disable right-click context menu when running in production.
+  invoke("is_release_mode").then((res) => {
+    if (res as boolean) {
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+    }
+  });
 
   /**
    * The menu items to display in the sidebar of our app
@@ -83,17 +97,18 @@ function App(): any {
     ["active_transfers", <ActiveTransfers />],
     ["history", <History />],
     ["settings", <Settings />],
-    ["about", <About />],
+    [
+      "about",
+      <About
+        logo={reactLogo}
+        appName="Pylon"
+        coreVersion={coreVersion!}
+        guiVersion={version}
+        buildDate={new Date().toUTCString()}
+        author="Nikhil Prabhu"
+      />,
+    ],
   ]);
-
-  // Disable right-click context menu when running in production.
-  invoke("is_release_mode").then((res) => {
-    if (res as boolean) {
-      document.addEventListener("contextmenu", (event) =>
-        event.preventDefault()
-      );
-    }
-  });
 
   /**
    * Sets the current view based on the selected menu item.
