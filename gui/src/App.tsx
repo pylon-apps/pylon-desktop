@@ -8,7 +8,7 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, Empty, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 
 import "./App.css";
 import reactLogo from "./assets/react.svg";
@@ -71,9 +71,6 @@ const items: MenuItem[] = [
 function App(): any {
   const [collapsed, setCollapsed] = useState(false);
   const [currentView, setCurrentView] = useState("dashboard");
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   /**
    * The available views that can be displayed in the app.
