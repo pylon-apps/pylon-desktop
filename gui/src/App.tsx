@@ -64,8 +64,8 @@ function App(): any {
   invoke("core_version").then((version) => setCoreVersion(version as string));
 
   // Disable right-click context menu when running in production.
-  invoke("is_release_mode").then((res) => {
-    if (res as boolean) {
+  invoke("is_release_mode").then((is_release) => {
+    if (is_release as boolean) {
       document.addEventListener("contextmenu", (event) =>
         event.preventDefault()
       );
