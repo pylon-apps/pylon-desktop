@@ -1,6 +1,20 @@
 import { invoke } from "@tauri-apps/api";
 
-export const bindings = {
+/**
+ * Type alias for an object containing binding functions.
+ * @date 2/26/2023 - 4:55:46 PM
+ *
+ * @typedef {Bindings}
+ */
+type Bindings = { [key: string]: (..._: any[]) => Promise<any> };
+
+/**
+ * Bindings to Rust functions (that are provided as Tauri commands).
+ * @date 2/26/2023 - 4:55:23 PM
+ *
+ * @type {Bindings}
+ */
+export const bindings: Bindings = {
   is_release_mode,
   core_version,
 };
