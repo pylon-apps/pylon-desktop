@@ -10,7 +10,7 @@ import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 
 import "./App.css";
-import { bindings } from "./bindings";
+import * as bindings from "./bindings";
 import reactLogo from "./assets/react.svg";
 import { version } from "../package.json";
 import Dashboard from "./views/Dashboard";
@@ -76,7 +76,6 @@ function App(): any {
 
   /**
    * The menu items to display in the sidebar of our app
-   * @date 2/23/2023 - 10:58:00 PM
    *
    * @type {MenuItem[]}
    */

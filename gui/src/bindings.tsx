@@ -1,29 +1,11 @@
 import { invoke } from "@tauri-apps/api";
 
 /**
- * Type alias for an object containing binding functions.
- *
- * @typedef {Bindings}
- */
-type Bindings = { readonly [key: string]: (..._: any[]) => Promise<any> };
-
-/**
- * Bindings to Rust functions (that are provided as Tauri commands).
- *
- * @type {Bindings}
- */
-export const bindings: Bindings = {
-  is_release_mode,
-  core_version,
-  build_timestamp,
-};
-
-/**
  * Indicates if we're currently running in release mode.
  *
  * @returns {Promise<boolean>} Resolves to whether we're running in release mode.
  */
-function is_release_mode(): Promise<boolean> {
+export function is_release_mode(): Promise<boolean> {
   return invoke("is_release_mode");
 }
 
@@ -32,7 +14,7 @@ function is_release_mode(): Promise<boolean> {
  *
  * @returns {Promise<string>} Resolves to the Pylon core version string.
  */
-function core_version(): Promise<string> {
+export function core_version(): Promise<string> {
   return invoke("core_version");
 }
 
@@ -41,6 +23,6 @@ function core_version(): Promise<string> {
  *
  * @returns {Promise<string>} Resolves to the build timestamp string.
  */
-function build_timestamp(): Promise<string> {
+export function build_timestamp(): Promise<string> {
   return invoke("build_timestamp");
 }
