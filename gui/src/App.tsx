@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from "react";
-import { invoke } from "@tauri-apps/api";
 import {
   DashboardOutlined,
   RocketOutlined,
@@ -8,9 +7,10 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 
 import "./App.css";
+import { bindings } from "./bindings";
 import reactLogo from "./assets/react.svg";
 import { version } from "../package.json";
 import Dashboard from "./views/Dashboard/Dashboard";
@@ -61,11 +61,11 @@ function App(): any {
   const [coreVersion, setCoreVersion] = useState("");
 
   // Get Pylon core library version.
-  invoke("core_version").then((version) => setCoreVersion(version as string));
+  bindings.core_version().then((version) => setCoreVersion(version as string));
 
   // Disable right-click context menu when running in production.
-  invoke("is_release_mode").then((is_release) => {
-    if (is_release as boolean) {
+  bindings.is_release_mode().then((is_release) => {
+    if (is_release) {
       document.addEventListener("contextmenu", (event) =>
         event.preventDefault()
       );
