@@ -13,11 +13,11 @@ import "./App.css";
 import { bindings } from "./bindings";
 import reactLogo from "./assets/react.svg";
 import { version } from "../package.json";
-import Dashboard from "./views/Dashboard/Dashboard";
-import ActiveTransfers from "./views/ActiveTransfers/ActiveTransfers";
-import History from "./views/History/History";
-import Settings from "./views/Settings/Settings";
-import About from "./views/About/About";
+import Dashboard from "./views/Dashboard";
+import ActiveTransfers from "./views/ActiveTransfers";
+import History from "./views/History";
+import Settings from "./views/Settings";
+import About from "./views/About";
 
 const { Content, Sider } = Layout;
 
