@@ -25,7 +25,6 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 /**
  * Returns a constructed `MenuItem`
- * @date 2/23/2023 - 10:55:20 PM
  *
  * @param {React.ReactNode} label The display label for the menu item
  * @param {React.Key} key The unique key for the menu item
@@ -51,7 +50,6 @@ function getMenuItem(
  * Primary component of our app
  *
  * This component will encapsulate and render the various other views of our app
- * @date 2/23/2023 - 10:58:29 PM
  *
  * @returns {*}
  */
@@ -88,7 +86,6 @@ function App(): any {
 
   /**
    * The available views that can be displayed in the app.
-   * @date 2/25/2023 - 11:15:59 AM
    *
    * @type {Map<string, ReactElement>} A map containing the unique key identifying the view, along with the view component.
    */
@@ -112,7 +109,6 @@ function App(): any {
 
   /**
    * Sets the current view based on the selected menu item.
-   * @date 2/25/2023 - 11:13:24 AM
    *
    * @param {*} e The menu item click event.
    */
