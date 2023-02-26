@@ -15,6 +15,7 @@ type Bindings = { readonly [key: string]: (..._: any[]) => Promise<any> };
 export const bindings: Bindings = {
   is_release_mode,
   core_version,
+  build_timestamp,
 };
 
 /**
@@ -33,4 +34,13 @@ function is_release_mode(): Promise<boolean> {
  */
 function core_version(): Promise<string> {
   return invoke("core_version");
+}
+
+/**
+ * Returns the build timestamp.
+ *
+ * @returns {Promise<string>} Resolves to the build timestamp string.
+ */
+function build_timestamp(): Promise<string> {
+  return invoke("build_timestamp");
 }
