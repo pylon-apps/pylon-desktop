@@ -5,7 +5,7 @@ import { invoke } from "@tauri-apps/api";
  *
  * @typedef {Bindings}
  */
-type Bindings = { [key: string]: (..._: any[]) => Promise<any> };
+type Bindings = { readonly [key: string]: (..._: any[]) => Promise<any> };
 
 /**
  * Bindings to Rust functions (that are provided as Tauri commands).
