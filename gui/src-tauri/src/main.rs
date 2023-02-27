@@ -24,9 +24,7 @@ fn is_release_mode() -> bool {
 /// Returns the build timestamp.
 #[tauri::command]
 fn build_timestamp() -> &'static str {
-    use build_time::build_time_utc;
-
-    build_time_utc!()
+    env!("BUILD_TIMESTAMP")
 }
 
 fn main() {
@@ -35,7 +33,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             is_release_mode,
             core_version,
-            build_timestamp
+            build_timestamp,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

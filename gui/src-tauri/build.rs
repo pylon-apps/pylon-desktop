@@ -1,3 +1,7 @@
+use chrono::Utc;
+
 fn main() {
-  tauri_build::build()
+    println!("cargo:rustc-env=BUILD_TIMESTAMP={}", Utc::now());
+
+    tauri_build::build()
 }
