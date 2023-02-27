@@ -26,3 +26,13 @@ export function core_version(): Promise<string> {
 export function build_timestamp(): Promise<string> {
   return invoke("build_timestamp");
 }
+
+/**
+ * Returns the latest git commit's ID.
+ *
+ * @export
+ * @returns {Promise<string>} Resolves to the git commit's ID.
+ */
+export function commit_id(): Promise<string> {
+  return invoke("commit_id");
+}

@@ -11,6 +11,7 @@ interface AboutProps {
   coreVersion?: string;
   guiVersion?: string;
   buildDate?: string;
+  commitID?: string;
   author?: string;
 }
 
@@ -41,6 +42,9 @@ function About(props: AboutProps) {
             </Descriptions.Item>
             <Descriptions.Item label="Build Date">
               {props.buildDate}
+            </Descriptions.Item>
+            <Descriptions.Item label="Commit ID">
+              {props.commitID}
             </Descriptions.Item>
           </Descriptions>
         </Row>

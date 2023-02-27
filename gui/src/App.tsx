@@ -58,12 +58,16 @@ function App(): any {
   const [currentView, setCurrentView] = useState("dashboard");
   const [coreVersion, setCoreVersion] = useState("");
   const [buildTimestamp, setBuildTimestamp] = useState("");
+  const [commitID, setCommitID] = useState("");
 
   // Get Pylon core library version.
   bindings.core_version().then((version) => setCoreVersion(version));
 
   // Get build timestamp.
   bindings.build_timestamp().then((timestamp) => setBuildTimestamp(timestamp));
+
+  // Get latest git commit ID.
+  bindings.commit_id().then((commit_id) => setCommitID(commit_id));
 
   // Disable right-click context menu when running in production.
   bindings.is_release_mode().then((is_release) => {
@@ -105,6 +109,7 @@ function App(): any {
         coreVersion={coreVersion!}
         guiVersion={version}
         buildDate={buildTimestamp}
+        commitID={commitID}
         author="Nikhil Prabhu"
       />,
     ],

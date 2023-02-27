@@ -27,6 +27,12 @@ fn build_timestamp() -> &'static str {
     env!("BUILD_TIMESTAMP")
 }
 
+/// Returns the latest git commit's ID.
+#[tauri::command]
+fn commit_id() -> &'static str {
+    env!("GIT_COMMIT_ID")
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_window_state::Builder::default().build())
@@ -34,6 +40,7 @@ fn main() {
             is_release_mode,
             core_version,
             build_timestamp,
+            commit_id,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
