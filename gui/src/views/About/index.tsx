@@ -2,16 +2,15 @@ import { HeartTwoTone } from "@ant-design/icons";
 import { Col, Row, Typography, Descriptions, Space } from "antd";
 
 import "./About.css";
+import * as bindings from "../../bindings";
 
 const { Title, Text } = Typography;
 
 interface AboutProps {
   logo?: string;
   appName?: string;
-  coreVersion?: string;
   guiVersion?: string;
-  buildDate?: string;
-  commitID?: string;
+  buildMetadata?: bindings.BuildMetadata;
   author?: string;
 }
 
@@ -35,16 +34,16 @@ function About(props: AboutProps) {
         <Row justify="space-around" align="middle">
           <Descriptions column={1} bordered>
             <Descriptions.Item label="Core Version">
-              {props.coreVersion}
+              {props.buildMetadata?.coreVersion}
             </Descriptions.Item>
             <Descriptions.Item label="GUI Version">
               {props.guiVersion}
             </Descriptions.Item>
             <Descriptions.Item label="Build Date">
-              {props.buildDate}
+              {props.buildMetadata?.buildTimestamp}
             </Descriptions.Item>
             <Descriptions.Item label="Commit ID">
-              {props.commitID}
+              {props.buildMetadata?.commitId}
             </Descriptions.Item>
           </Descriptions>
         </Row>
