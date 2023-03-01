@@ -11,6 +11,7 @@ use std::future::Future;
 use std::net::SocketAddr;
 use std::path::PathBuf;
 
+use derive_builder::Builder;
 use futures::{AsyncRead, AsyncWrite};
 use magic_wormhole::rendezvous::DEFAULT_RENDEZVOUS_SERVER;
 use magic_wormhole::transfer::{self, AppVersion, ReceiveRequest, TransferError};
@@ -74,52 +75,29 @@ impl Serialize for PylonError {
     }
 }
 
-/// Configuration values for the Pylon.
-pub struct PylonConfig {
-    /// The ID of your application.
-    pub id: String,
-    /// The wormhole rendezvous server's URL.
-    pub rendezvous_url: String,
-    /// The wormhole relay server's URL.
-    pub relay_url: String,
-}
-
-impl Default for PylonConfig {
-    fn default() -> Self {
-        Self {
-            id: APP_ID.into(),
-            rendezvous_url: DEFAULT_RENDEZVOUS_SERVER.into(),
-            relay_url: DEFAULT_RELAY_SERVER.into(),
-        }
-    }
-}
-
 // TODO: improve documentation
 /// High-level wrapper over a magic-wormhole that allows for secure file-transfers.
+#[derive(Builder)]
 pub struct Pylon {
-    handshake: Option<Box<Handshake>>,
-    transfer_request: Option<ReceiveRequest>,
+    #[builder(default = "APP_ID.into()")]
+    id: String,
+    #[builder(default = "DEFAULT_RELAY_SERVER.into()")]
     relay_url: String,
-    config: AppConfig<AppVersion>,
+    #[builder(default = "DEFAULT_RENDEZVOUS_SERVER.into()")]
+    rendezvous_url: String,
+    #[builder(setter(skip))]
+    handshake: Option<Box<Handshake>>,
+    #[builder(setter(skip))]
+    transfer_request: Option<ReceiveRequest>,
 }
 
 impl Pylon {
-    // TODO: add example(s)
-    /// Creates a new Pylon using the specified config.
-    ///
-    /// # Arguments
-    ///
-    /// * `config` - The configuration to use. (Can use `Default::default()`).
-    pub fn new(config: PylonConfig) -> Self {
-        Self {
-            handshake: None,
-            transfer_request: None,
-            relay_url: config.relay_url,
-            config: AppConfig {
-                id: AppID(Cow::from(config.id)),
-                rendezvous_url: Cow::from(config.rendezvous_url),
-                app_version: AppVersion {},
-            },
+    /// Builds and returns a wormhole app config.
+    fn config(&self) -> AppConfig<AppVersion> {
+        AppConfig {
+            id: AppID(Cow::from(self.id.clone())),
+            rendezvous_url: Cow::from(self.rendezvous_url.clone()),
+            app_version: AppVersion {},
         }
     }
 
@@ -137,7 +115,7 @@ impl Pylon {
         }
 
         let (welcome, handshake) =
-            Wormhole::connect_without_code(self.config.clone(), code_length).await?;
+            Wormhole::connect_without_code(self.config(), code_length).await?;
         self.handshake = Some(Box::new(Box::pin(handshake)));
 
         Ok(welcome.code.0)
@@ -215,7 +193,7 @@ impl Pylon {
         let transit_abilities = Abilities::ALL_ABILITIES;
         let relay_hints = vec![RelayHint::from_urls(None, [self.relay_url.parse()?])?];
 
-        let (_, wh) = Wormhole::connect_with_code(self.config.clone(), Code(code)).await?;
+        let (_, wh) = Wormhole::connect_with_code(self.config(), Code(code)).await?;
         let request =
             transfer::request_file(wh, relay_hints, transit_abilities, cancel_handler).await?;
         self.transfer_request = request;
