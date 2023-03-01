@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import {
   DashboardOutlined,
   RocketOutlined,
@@ -58,19 +58,22 @@ function App(): any {
   const [currentView, setCurrentView] = useState("dashboard");
   const [buildMetadata, setBuildMetadata] = useState<bindings.BuildMetadata>();
 
-  // Get build metadata.
-  bindings.get_build_metadata().then((metadata) => {
-    setBuildMetadata(metadata);
-  });
+  // Perform basic setup stuff when the component is mounted (only once).
+  useEffect(() => {
+    // Get build metadata.
+    bindings.get_build_metadata().then((metadata) => {
+      setBuildMetadata(metadata);
+    });
 
-  // Disable right-click context menu when running in production.
-  bindings.is_release_mode().then((is_release) => {
-    if (is_release) {
-      document.addEventListener("contextmenu", (event) =>
-        event.preventDefault()
-      );
-    }
-  });
+    // Disable right-click context menu when running in production.
+    bindings.is_release_mode().then((is_release) => {
+      if (is_release) {
+        document.addEventListener("contextmenu", (event) =>
+          event.preventDefault()
+        );
+      }
+    });
+  }, []);
 
   /**
    * The menu items to display in the sidebar of our app
