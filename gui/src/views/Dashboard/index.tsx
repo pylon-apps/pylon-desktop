@@ -7,7 +7,13 @@ interface DashboardProps {
   appLogo?: string;
 }
 
-function Dashboard(props: DashboardProps) {
+/**
+ * View that contains the main functionality; initiating file transfers.
+ *
+ * @param {DashboardProps} props
+ * @returns {*}
+ */
+function Dashboard(props: DashboardProps): any {
   return (
     <div className="Dashboard">
       <Space

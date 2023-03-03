@@ -14,7 +14,13 @@ interface AboutProps {
   author?: string;
 }
 
-function About(props: AboutProps) {
+/**
+ * View that displays software versions and other information.
+ *
+ * @param {AboutProps} props
+ * @returns {*}
+ */
+function About(props: AboutProps): any {
   return (
     <div className="About">
       <Space
