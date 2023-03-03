@@ -25,6 +25,7 @@ function Dashboard(props: DashboardProps): any {
         <Row justify="space-around" align="middle">
           <img className="Dashboard-logo" src={props.appLogo} alt="logo" />
         </Row>
+
         <Row justify="center" align="middle">
           <Space size="large">
             <Button className="Dashboard-button" icon={<UploadOutlined />}>

@@ -34,25 +34,31 @@ function About(props: AboutProps): any {
             <img className="About-logo" src={props.logo} alt="logo" />
           </Col>
         </Row>
+
         <Row justify="space-around" align="middle">
           <Title>{props.appName}</Title>
         </Row>
+
         <Row justify="space-around" align="middle">
           <Descriptions column={1} bordered>
             <Descriptions.Item label="Core Version">
               {props.buildMetadata?.coreVersion}
             </Descriptions.Item>
+
             <Descriptions.Item label="GUI Version">
               {props.guiVersion}
             </Descriptions.Item>
+
             <Descriptions.Item label="Build Date">
               {props.buildMetadata?.buildTimestamp}
             </Descriptions.Item>
+
             <Descriptions.Item label="Commit ID">
               {props.buildMetadata?.commitId}
             </Descriptions.Item>
           </Descriptions>
         </Row>
+
         <Row justify="space-around" align="middle">
           <Text className="About-footer" strong keyboard>
             Made with <HeartTwoTone twoToneColor="magenta" /> by {props.author}
