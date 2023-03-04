@@ -6,6 +6,7 @@ authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
 license = "GPL-3.0"
 repository = "https://github.com/nikhil-prabhu/pylon-desktop"
 edition = "2021"
+rust-version = "1.63.0"
 
 [dependencies]
 tauri = { version = "1.2", features = ["shell-open"] }

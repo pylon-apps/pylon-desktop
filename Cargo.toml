@@ -3,7 +3,7 @@ members = ["src-tauri"]
 
 [workspace.package]
 authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
-rust-version = "1.64.0"
+rust-version = "1.63.0"
 
 [profile.release]
 panic = "abort"
