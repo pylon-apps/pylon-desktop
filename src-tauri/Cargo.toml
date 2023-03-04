@@ -1,25 +1,23 @@
 [package]
-name = "pylon_gui"
+name = "pylon_desktop"
 version = "0.10.1"
 description = " Cross-platform, secure file transfer desktop application"
 authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
 license = "GPL-3.0"
-repository = "https://github.com/nikhil-prabhu/pylon"
+repository = "https://github.com/nikhil-prabhu/pylon-desktop"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+tauri = { version = "1.2", features = ["shell-open"] }
+tauri-plugin-window-state = "0.1.0"
+libpylon = "0.7.0"
 
 [build-dependencies]
 tauri-build = { version = "1.2", features = [] }
 chrono = "0.4.23"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-pylon_core = { path = "../../core" }
-
-[dependencies]
-tauri = { version = "1.2", features = ["shell-open"] }
-tauri-plugin-window-state = "0.1.0"
-pylon_core = { path = "../../core" }
+libpylon = "0.7.0"
 
 [features]
 # by default Tauri runs in production mode

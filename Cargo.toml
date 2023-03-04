@@ -1,10 +1,8 @@
 [workspace]
-members = ["core", "gui/src-tauri"]
+members = ["src-tauri"]
 
 [workspace.package]
 authors = ["Nikhil Prabhu <nikhilprabhu98@gmail.com>"]
-edition = "2021"
-version = "0.7.0"
 rust-version = "1.64.0"
 
 [profile.release]

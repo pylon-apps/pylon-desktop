@@ -4,7 +4,7 @@ use std::process::Command;
 use chrono::Utc;
 use serde::Serialize;
 
-use pylon_core::consts::APP_VERSION;
+use libpylon::consts::APP_VERSION;
 
 /// Metadata generated at build-time.
 #[derive(Serialize)]
