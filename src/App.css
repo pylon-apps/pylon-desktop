@@ -1,5 +1,4 @@
 .View-container {
   padding: 24;
-  min-height: 100vh;
-  overflow-y: auto;
+  max-height: 100vh;
 }

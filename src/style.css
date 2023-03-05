@@ -1,9 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  user-select: none;
   -webkit-user-select: none;
- }
+  user-select: none;
+}
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -13,8 +13,6 @@
 
   color: #0f0f0f;
   background-color: #f6f6f6;
-
-  overflow-y: hidden;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

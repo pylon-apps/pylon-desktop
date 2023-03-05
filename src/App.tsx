@@ -121,7 +121,7 @@ function App(): any {
 
   // TODO: don't inline styles
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh", overflow: "hidden" }}>
       <Sider
         theme="dark"
         collapsible
@@ -137,7 +137,7 @@ function App(): any {
         />
       </Sider>
 
-      <Layout className="site-layout">
+      <Layout className="site-layout" style={{ overflowY: "scroll" }}>
         <Content style={{ margin: "0 0" }}>
           <div className="View-container">
             {/* This is where our views would be rendered */}
