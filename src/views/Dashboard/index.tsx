@@ -1,4 +1,5 @@
-import { Button, Row, Space } from "antd";
+import { useState, ChangeEvent } from "react";
+import { Button, Row, Space, Input } from "antd";
 import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 
 import "./Dashboard.css";
@@ -14,6 +15,21 @@ interface DashboardProps {
  * @returns {*}
  */
 function Dashboard(props: DashboardProps): any {
+  const [receiveDisabled, setReceiveDisabled] = useState(true);
+
+  /**
+   * Event handler for when the Pylon code is entered into the input field.
+   *
+   * @param {ChangeEvent<HTMLInputElement>} e
+   */
+  function codeEntered(e: ChangeEvent<HTMLInputElement>) {
+    if (e.currentTarget.value) {
+      setReceiveDisabled(false);
+    } else {
+      setReceiveDisabled(true);
+    }
+  }
+
   return (
     <div className="Dashboard">
       <Space
@@ -27,13 +43,24 @@ function Dashboard(props: DashboardProps): any {
         </Row>
 
         <Row justify="center" align="middle">
-          <Space size="large">
+          <Space size="middle">
             <Button className="Dashboard-button" icon={<UploadOutlined />}>
               Send
             </Button>
-            <Button className="Dashboard-button" icon={<DownloadOutlined />}>
-              Receive
-            </Button>
+            <Input.Group compact>
+              <Input
+                onChange={codeEntered}
+                style={{ width: "65%" }}
+                placeholder="Enter Pylon code"
+              />
+              <Button
+                disabled={receiveDisabled}
+                className="Dashboard-button"
+                icon={<DownloadOutlined />}
+              >
+                Receive
+              </Button>
+            </Input.Group>
           </Space>
         </Row>
       </Space>
