@@ -16,10 +16,12 @@ export interface BuildMetadata {
 /**
  * Indicates if we're currently running in release mode.
  *
+ * @export
+ * @async
  * @returns {Promise<boolean>} Resolves to whether we're running in release mode.
  */
-export function isReleaseMode(): Promise<boolean> {
-  return invoke("is_release_mode");
+export async function isReleaseMode(): Promise<boolean> {
+  return await invoke("is_release_mode");
 }
 
 /**
