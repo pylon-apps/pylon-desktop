@@ -18,7 +18,7 @@ export interface BuildMetadata {
  *
  * @returns {Promise<boolean>} Resolves to whether we're running in release mode.
  */
-export function is_release_mode(): Promise<boolean> {
+export function isReleaseMode(): Promise<boolean> {
   return invoke("is_release_mode");
 }
 
@@ -29,7 +29,7 @@ export function is_release_mode(): Promise<boolean> {
  * @async
  * @returns {Promise<BuildMetadata>} Resolves to the build metadata.
  */
-export async function get_build_metadata(): Promise<BuildMetadata> {
+export async function getBuildMetadata(): Promise<BuildMetadata> {
   let metadata = await invoke<string>("get_build_metadata");
   return JSON.parse(metadata);
 }

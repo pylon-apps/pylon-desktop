@@ -61,12 +61,12 @@ function App(): any {
   // Perform basic setup stuff when the component is mounted (only once).
   useEffect(() => {
     // Get build metadata.
-    bindings.get_build_metadata().then((metadata) => {
+    bindings.getBuildMetadata().then((metadata) => {
       setBuildMetadata(metadata);
     });
 
     // Disable right-click context menu when running in production.
-    bindings.is_release_mode().then((is_release) => {
+    bindings.isReleaseMode().then((is_release) => {
       if (is_release) {
         document.addEventListener("contextmenu", (event) =>
           event.preventDefault()
