@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.nikhil-prabhu.pylon-desktop",
+      "identifier": "com.pylon-apps.pylon-desktop",
       "longDescription": "Cross-platform, secure file transfer desktop application",
       "macOS": {
         "entitlements": null,
