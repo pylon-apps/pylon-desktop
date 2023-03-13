@@ -9,16 +9,18 @@ edition = "2021"
 rust-version = "1.63.0"
 
 [dependencies]
-tauri = { version = "1.2", features = ["shell-open"] }
+tauri = { version = "1.2", features = ["clipboard-write-text", "dialog-open", "dialog-save"] }
 tauri-plugin-window-state = "0.1.0"
-libpylon = "0.7.0"
+libpylon = "0.11.2"
+tokio = { version = "1.26.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
 
 [build-dependencies]
 tauri-build = { version = "1.2", features = [] }
 chrono = "0.4.23"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-libpylon = "0.7.0"
+libpylon = "0.11.2"
 
 [features]
 # by default Tauri runs in production mode
