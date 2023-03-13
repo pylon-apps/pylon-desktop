@@ -23,9 +23,9 @@ export interface BuildMetadata {
  * @typedef {ProgressPayload}
  */
 export interface ProgressPayload {
-  current: number;
-  total: number;
-  percent: number;
+  readonly current: number;
+  readonly total: number;
+  readonly percent: number;
 }
 
 /**
