@@ -48,6 +48,7 @@ bindings
             element: (
               <About
                 logo={reactLogo}
+                appName="Pylon Desktop"
                 guiVersion={guiVersion}
                 buildMetadata={buildMetadata}
                 author="Nikhil Prabhu"
