@@ -2735,7 +2735,7 @@ dependencies = [
 
 [[package]]
 name = "pylon_desktop"
-version = "0.13.0"
+version = "0.13.1"
 dependencies = [
  "chrono",
  "libpylon",
