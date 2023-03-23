@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DashboardOutlined,
   RocketOutlined,
@@ -11,13 +11,7 @@ import { Layout, Menu } from "antd";
 
 import "./App.css";
 import * as bindings from "./bindings";
-import reactLogo from "./assets/react.svg";
-import { version } from "../package.json";
-import Dashboard from "./views/Dashboard";
-import ActiveTransfers from "./views/ActiveTransfers";
-import History from "./views/History";
-import Settings from "./views/Settings";
-import About from "./views/About";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const { Content, Sider } = Layout;
 
@@ -55,16 +49,10 @@ function getMenuItem(
  */
 function App(): any {
   const [collapsed, setCollapsed] = useState(false);
-  const [currentView, setCurrentView] = useState("dashboard");
-  const [buildMetadata, setBuildMetadata] = useState<bindings.BuildMetadata>();
+  const navigate = useNavigate();
 
   // Perform basic setup stuff when the component is mounted (only once).
   useEffect(() => {
-    // Get build metadata.
-    bindings.getBuildMetadata().then((metadata) => {
-      setBuildMetadata(metadata);
-    });
-
     // Disable right-click context menu when running in production.
     bindings.isReleaseMode().then((is_release) => {
       if (is_release) {
@@ -82,33 +70,11 @@ function App(): any {
    */
   const items: MenuItem[] = [
     getMenuItem("Dashboard", "dashboard", <DashboardOutlined />),
-    getMenuItem("Active Transfers", "active_transfers", <RocketOutlined />),
+    getMenuItem("Active Transfers", "activeTransfers", <RocketOutlined />),
     getMenuItem("History", "history", <HistoryOutlined />),
     getMenuItem("Settings", "settings", <SettingOutlined />),
     getMenuItem("About", "about", <InfoCircleOutlined />),
   ];
-
-  /**
-   * The available views that can be displayed in the app.
-   *
-   * @type {Map<string, ReactElement>} A map containing the unique key identifying the view, along with the view component.
-   */
-  const views: Map<string, ReactElement> = new Map([
-    ["dashboard", <Dashboard appLogo={reactLogo} />],
-    ["active_transfers", <ActiveTransfers />],
-    ["history", <History />],
-    ["settings", <Settings />],
-    [
-      "about",
-      <About
-        logo={reactLogo}
-        appName="Pylon"
-        guiVersion={version}
-        buildMetadata={buildMetadata}
-        author="Nikhil Prabhu"
-      />,
-    ],
-  ]);
 
   /**
    * Sets the current view based on the selected menu item.
@@ -116,10 +82,9 @@ function App(): any {
    * @param {*} e The menu item click event.
    */
   const switchView: MenuProps["onClick"] = (e: any) => {
-    setCurrentView(e.key);
+    navigate(`/${e.key}`);
   };
 
-  // TODO: don't inline styles
   return (
     <Layout style={{ minHeight: "100vh", overflow: "hidden" }}>
       <Sider
@@ -142,7 +107,7 @@ function App(): any {
           <div className="View-container">
             {/* This is where our views would be rendered */}
             {/* TODO: Use custom logo */}
-            {views.get(currentView)}
+            <Outlet />
           </div>
         </Content>
       </Layout>
