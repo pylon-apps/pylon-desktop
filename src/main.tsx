@@ -51,7 +51,7 @@ bindings
                 appName="Pylon Desktop"
                 guiVersion={guiVersion}
                 buildMetadata={buildMetadata}
-                author="Nikhil Prabhu"
+                author="Pylon Apps"
               />
             ),
           },
