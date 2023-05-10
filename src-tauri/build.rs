@@ -4,7 +4,7 @@ use std::process::Command;
 use chrono::Utc;
 use serde::Serialize;
 
-use libpylon::consts::APP_VERSION;
+use libpylon::consts::VERSION;
 
 /// Metadata generated at build-time.
 #[derive(Serialize)]
@@ -27,7 +27,7 @@ impl fmt::Display for BuildMetadata {
 impl BuildMetadata {
     /// Generates and returns the build metadata.
     fn new() -> Self {
-        let core_version = APP_VERSION;
+        let core_version = VERSION;
         let build_timestamp = Utc::now().to_string();
         let commit_id = match Command::new("git").args(&["rev-parse", "HEAD"]).output() {
             Ok(out) => String::from_utf8(out.stdout).unwrap_or("Unknown".into()),

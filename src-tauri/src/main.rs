@@ -195,7 +195,7 @@ async fn receive_file(
     // Finally, we initiate the file transfer in a separate thread.
     tokio::spawn(async move {
         pylon
-            .receive_file(file, progress_handler, cancel_handler)
+            .accept_transfer(file, progress_handler, cancel_handler)
             .await?;
         Ok::<(), PylonError>(())
     });

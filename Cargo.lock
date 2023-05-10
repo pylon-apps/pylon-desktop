@@ -1995,9 +1995,9 @@ checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
 
 [[package]]
 name = "libpylon"
-version = "0.11.2"
+version = "0.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43a3ed1640cb01413ace11ca2cdd6b194219583a70f2534c436c0bdf3f55ab8f"
+checksum = "b47ea0606933ec02d01a176029a8fb29f0e084869c6d203b9d05e3d775d3d7d9"
 dependencies = [
  "derive_builder",
  "magic-wormhole",
