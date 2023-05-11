@@ -6,6 +6,7 @@ import reactLogo from "./assets/react.svg";
 import { version as guiVersion } from "../package.json";
 import * as bindings from "./bindings";
 import App from "./App";
+import AppContextProvider from "./context";
 import "./style.css";
 
 // Views
@@ -62,7 +63,9 @@ bindings
     ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <React.StrictMode>
         <AntApp>
-          <RouterProvider router={router} />
+          <AppContextProvider>
+            <RouterProvider router={router} />
+          </AppContextProvider>
         </AntApp>
       </React.StrictMode>
     );
