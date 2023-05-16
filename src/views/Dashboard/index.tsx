@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useContext } from "react";
 import { writeText } from "@tauri-apps/api/clipboard";
 import { open, save } from "@tauri-apps/api/dialog";
 import {
@@ -21,6 +21,7 @@ import {
 import * as bindings from "../../bindings";
 
 import "./Dashboard.css";
+import { AppContext } from "../../context";
 
 const { Text } = Typography;
 
@@ -35,7 +36,8 @@ interface DashboardProps {
  * @returns {*}
  */
 function Dashboard(props: DashboardProps): any {
-  const { message, modal, notification } = AntApp.useApp();
+  const ctx = useContext(AppContext);
+  const { message, modal } = AntApp.useApp();
   const [receiveDisabled, setReceiveDisabled] = useState(true);
   const [dashboardState, setDashboardState] = useState<
     "default" | "loading" | "displaycode"
@@ -146,6 +148,7 @@ function Dashboard(props: DashboardProps): any {
 
       message.success("Transfer started");
       setDashboardState("default");
+      ctx?.addCode(code);
     } catch (err) {
       modal.error({ title: "Error", content: err as string });
       setDashboardState("default");
@@ -170,6 +173,7 @@ function Dashboard(props: DashboardProps): any {
 
       message.success("Transfer started");
       setDashboardState("default");
+      ctx?.addCode(pylonCode!);
     } catch (err) {
       modal.error({ title: "Error", content: err as string });
       setDashboardState("default");

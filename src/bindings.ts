@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api";
-import { once, Event } from "@tauri-apps/api/event";
+import { once, listen, Event } from "@tauri-apps/api/event";
 
 /**
  * Metadata generated at build-time by the Tauri backend.
@@ -109,6 +109,36 @@ export async function receiveFile(code: string, file: string): Promise<void> {
       // Once we receive the first event, we stop listening to future events and resolve to unblock the caller.
       unlisten.then((unlisten) => unlisten());
       resolve();
+    });
+  });
+}
+
+
+/**
+ * Tracks an ongoing file transfer operation using the unique Pylon code assigned to it, and a callback function that
+ * is fired frequently during the transfer. This callback function can be used to handle what is done with the progress
+ * information.
+ *
+ * @export
+ * @async
+ * @param {string} code The Pylon code.
+ * @param {(current: number, total: number, percent: number) => void} tracker Callback function to use for tracking the progress.
+ * @returns {Promise<void>} Resolves when the file transfer operation completes.
+ */
+export async function trackProgress(
+  code: string,
+  tracker: (current: number, total: number, percent: number) => void,
+): Promise<void> {
+  // Listen for constant progress events from the backend.
+  return new Promise((resolve) => {
+    const unlisten = listen(code, (e: Event<ProgressPayload>) => {
+      tracker(e.payload.current, e.payload.total, e.payload.percent);
+
+      // When the transfer progress reaches 100%, we resolve and stop listening to the progress event.
+      if (e.payload.percent === 100) {
+        unlisten.then((unlisten) => unlisten());
+        resolve();
+      }
     });
   });
 }

@@ -8,7 +8,10 @@ import {
   Space,
   Typography,
 } from "antd";
+import { useContext, useState, useEffect, useCallback } from "react";
+import { AppContext } from "../../context";
 
+import * as bindings from "../../bindings";
 import "./ActiveTransfers.css";
 
 const { Text } = Typography;
@@ -55,31 +58,43 @@ function TransferContainer(props: TransferContainerProps): any {
 }
 
 /**
- * The list of active transfers.
- *
- * @interface ActiveTransfersProps
- * @typedef {ActiveTransfersProps}
- */
-interface ActiveTransfersProps {
-  transfers?: TransferContainerProps[];
-}
-
-/**
  * Displays active file transfers.
  *
  * @param {ActiveTransfersProps} props
  * @returns {*}
  */
-function ActiveTransfers(props: ActiveTransfersProps): any {
-  if (props.transfers) {
+function ActiveTransfers(): any {
+  const ctx = useContext(AppContext);
+
+  if (ctx?.codes && ctx?.codes.length! > 0) {
+    const [fileName, _setFileName] = useState("");
+    const [fileSize, _setFileSize] = useState("");
+    const [percent, setPercent] = useState(0);
+
+    const tracker = useCallback(
+      (_current: number, _total: number, percent: number) => {
+        setPercent(percent);
+      },
+      []
+    );
+
+    useEffect(() => {
+      ctx.codes.forEach((code) => {
+        bindings.trackProgress(code, tracker);
+        if (percent === 100) {
+          ctx.deleteCode(code);
+        }
+      });
+    }, [ctx.codes, tracker]);
+
     return (
       <div>
         <Space direction="vertical" size="large" style={{ width: "100%" }}>
-          {props.transfers.map((props, _) => (
+          {ctx.codes.map(() => (
             <TransferContainer
-              fileName={props.fileName}
-              fileSize={props.fileSize}
-              percent={props.percent}
+              fileName={fileName}
+              fileSize={fileSize}
+              percent={percent}
             />
           ))}
         </Space>
