@@ -9,7 +9,7 @@ edition = "2021"
 rust-version = "1.63.0"
 
 [dependencies]
-tauri = { version = "1.2", features = [
+tauri = { version = "1.4", features = [
 	"clipboard-write-text",
 	"dialog-open",
 	"dialog-save",
