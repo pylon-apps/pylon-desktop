@@ -37,9 +37,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "pylon-desktop",
-        "width": 800,
-        "height": 600
+        "title": "Pylon",
+        "width": 1200,
+        "height": 720
       }
     ]
   }
