@@ -1,0 +1,21 @@
+.Window {
+    min-height: 100vh;
+}
+
+.Sidebar {
+    background-color: #DAE1E6;
+}
+
+.Appinfo {
+    padding: 1.5em;
+    margin-top: 1em;
+}
+
+.Sidebar-MenuItem {
+    padding: 0.8em;
+}
+
+.Viewport {
+    background-color: #F8F8F8;
+    box-shadow: -10px 0 10px 1px #D7DCE0;
+}
