@@ -20,11 +20,11 @@ interface MenuItemProps {
 
 function MenuItem(props: MenuItemProps) {
     let {label, selected, icon} = props;
-    let iconColor = selected ? "navy" : "#9BA0A2";
-    let bgColor = selected ? "#EDF2F7" : "inherit";
+    let iconColor = selected ? "white" : "#9BA0A2";
+    let compClass = selected ? "Sidebar-MenuItem-selected" : "Sidebar-MenuItem";
 
     return (
-        <Container borderRadius={15} className="Sidebar-MenuItem" style={{backgroundColor: bgColor}}>
+        <Container borderRadius={15} className={compClass}>
             <HStack spacing="16px">
                 {/* @ts-ignore */}
                 {icon && React.cloneElement(icon, {color: iconColor})}

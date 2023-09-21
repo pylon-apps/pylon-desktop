@@ -13,6 +13,24 @@
 
 .Sidebar-MenuItem {
     padding: 0.8em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+.Sidebar-MenuItem:hover {
+    cursor: pointer;
+    background-color: rgba(248, 248, 248, 0.44);
+}
+
+.Sidebar-MenuItem-selected {
+    color: #F8F8F8;
+    padding: 0.8em;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 49%, rgba(0, 212, 255, 1) 100%);
+}
+
+.Sidebar-MenuItem-selected:hover {
+    cursor: pointer;
 }
 
 .Viewport {
