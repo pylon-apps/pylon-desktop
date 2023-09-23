@@ -1,16 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Dev" type="ShConfigurationType" singleton="false">
-    <option name="SCRIPT_TEXT" value="yarn tauri dev" />
-    <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-    <option name="SCRIPT_PATH" value="" />
-    <option name="SCRIPT_OPTIONS" value="" />
-    <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-    <option name="INTERPRETER_PATH" value="/usr/bin/zsh" />
-    <option name="INTERPRETER_OPTIONS" value="" />
-    <option name="EXECUTE_IN_TERMINAL" value="false" />
-    <option name="EXECUTE_SCRIPT_FILE" value="false" />
+  <configuration default="false" name="Dev" type="js.build_tools.npm" singleton="false">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="tauri" />
+    </scripts>
+    <arguments value="dev" />
+    <node-interpreter value="project" />
     <envs />
     <method v="2" />
   </configuration>
