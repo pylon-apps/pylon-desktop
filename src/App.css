@@ -35,4 +35,5 @@
 .Viewport {
     background-color: #F8F8F8;
     box-shadow: -10px 0 10px 1px #D7DCE0;
+    padding: 1.5em;
 }
