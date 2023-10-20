@@ -1,0 +1,10 @@
+.Dashboard {
+    /*  placeholder  */
+}
+
+.Dashboard-box {
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.5em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}

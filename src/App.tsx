@@ -2,15 +2,9 @@ import "./App.css";
 import {Avatar, Badge, Box, Button, ChakraProvider, Container, Flex, HStack, Text, VStack} from "@chakra-ui/react";
 import {Icon} from "@chakra-ui/icons";
 import React from "react";
-import {
-    FaArrowRightArrowLeft,
-    FaCircleInfo,
-    FaClockRotateLeft,
-    FaGaugeHigh,
-    FaGear,
-    FaPersonDigging
-} from "react-icons/fa6";
+import {FaArrowRightArrowLeft, FaCircleInfo, FaClockRotateLeft, FaGaugeHigh, FaGear} from "react-icons/fa6";
 import {IconType} from "react-icons";
+import {Outlet} from "react-router-dom";
 
 interface MenuItemProps {
     label: string;
@@ -68,10 +62,7 @@ function App() {
 
                 <Box flex={1} className="Viewport">
                     {/* Our views will be rendered here */}
-                    <VStack spacing="24px" style={{marginTop: "15em"}}>
-                        <Icon as={FaPersonDigging} boxSize="5em" color="#9BA0A2"/>
-                        <Text fontSize="xl" color="#9BA0A2">There's nothing here yet. Stay tuned!</Text>
-                    </VStack>
+                    <Outlet/>
                 </Box>
             </Flex>
         </ChakraProvider>
