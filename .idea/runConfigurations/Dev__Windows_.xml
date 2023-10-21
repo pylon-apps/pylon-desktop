@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build" type="js.build_tools.npm">
+  <configuration default="false" name="Dev (Windows)" type="js.build_tools.npm" singleton="false">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
       <script value="tauri" />
     </scripts>
-    <arguments value="build" />
+    <arguments value="dev" />
     <node-interpreter value="project" />
     <envs />
     <method v="2" />
