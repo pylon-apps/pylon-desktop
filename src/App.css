@@ -24,9 +24,8 @@
 
 .Sidebar-MenuItem-selected {
     color: #F8F8F8;
+    background-color: navy;
     padding: 0.8em;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 49%, rgba(0, 212, 255, 1) 100%);
 }
 
 .Sidebar-MenuItem-selected:hover {
@@ -36,4 +35,5 @@
 .Viewport {
     background-color: #F8F8F8;
     box-shadow: -10px 0 10px 1px #D7DCE0;
+    padding: 1.5em;
 }
