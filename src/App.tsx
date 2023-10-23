@@ -1,4 +1,5 @@
 import "./App.css";
+import Logo from "./assets/logo.png";
 import {Avatar, Badge, Box, Button, ChakraProvider, Container, Flex, HStack, Text, VStack} from "@chakra-ui/react";
 import {Icon} from "@chakra-ui/icons";
 import React from "react";
@@ -36,7 +37,8 @@ function App() {
                     <VStack spacing="48px">
                         <Container className="Appinfo">
                             <HStack spacing="16px">
-                                <Avatar name="Pylon" color="#F8F8F8" backgroundColor="navy"/>
+                                {/* FIXME!: remove padding around logo (currently, explicitly setting `showBorder` doesn't seem to work) */}
+                                <Avatar name="Pylon" color="#F8F8F8" backgroundColor="navy" src={Logo}/>
                                 <VStack spacing="2px">
                                     <Text style={{width: "100%"}} fontSize="sm" fontWeight={700}>Pylon Desktop</Text>
                                     <Text style={{width: "100%"}} fontSize="xs">v0.0.0-alpha</Text>
