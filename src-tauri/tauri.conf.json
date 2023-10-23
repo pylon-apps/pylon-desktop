@@ -38,8 +38,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "Pylon",
-        "width": 1200,
-        "height": 720
+        "minWidth": 1280,
+        "minHeight": 720
       }
     ]
   }
