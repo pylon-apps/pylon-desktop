@@ -1,4 +1,4 @@
-import {Center, Divider, Flex, HStack, Spacer, Text} from "@chakra-ui/react";
+import {Center, Divider, Flex, HStack, Spacer, Tab, TabList, TabPanel, TabPanels, Tabs, Text} from "@chakra-ui/react";
 import "./index.css";
 
 function Dashboard() {
@@ -15,14 +15,6 @@ function Dashboard() {
 
                 <HStack>
                     <Text fontSize="sm" fontWeight={700}>Active</Text>
-                    <Divider/>
-                </HStack>
-                <Center className="Dashboard-box">
-                    <Text fontSize="xl">PLACEHOLDER</Text>
-                </Center>
-
-                <HStack>
-                    <Text fontSize="sm" fontWeight={700}>History</Text>
                     <Divider/>
                 </HStack>
                 <Center flex={1} className="Dashboard-box">
@@ -43,13 +35,26 @@ function Dashboard() {
                     <Text fontSize="xl">PLACEHOLDER</Text>
                 </Center>
 
-                <HStack>
-                    <Text fontSize="sm" fontWeight={700}>Info</Text>
-                    <Divider/>
-                </HStack>
-                <Center flex={1}>
-                    <Text fontSize="xl">PLACEHOLDER</Text>
-                </Center>
+                <Tabs align="center" isFitted>
+                    <TabList>
+                        <Tab>Activity</Tab>
+                        <Tab>Information</Tab>
+                    </TabList>
+
+                    <TabPanels>
+                        {/* FIXME!: flex entire available height */}
+                        <TabPanel>
+                            <Center flex={1} className="Dashboard-box">
+                                <Text fontSize="xl">PLACEHOLDER</Text>
+                            </Center>
+                        </TabPanel>
+                        <TabPanel>
+                            <Center flex={1} className="Dashboard-box">
+                                <Text fontSize="xl">PLACEHOLDER</Text>
+                            </Center>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
             </Flex>
         </Flex>
     );
