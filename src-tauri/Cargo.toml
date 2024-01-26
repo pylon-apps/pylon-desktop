@@ -7,6 +7,9 @@ license = "GPL-3.0"
 repository = "https://github.com/pylon-apps/pylon-desktop"
 edition = "2021"
 
+[profile.release]
+strip = true
+
 [build-dependencies]
 tauri-build = { version = "1.5", features = [] }
 libpylon = "0.17.0"
