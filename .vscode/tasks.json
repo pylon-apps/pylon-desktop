@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pylon-Desktop: Run",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["tauri", "dev"]
+    },
+    {
+      "label": "Pylon-Desktop: Build",
+      "type": "shell",
+      "command": "yarn",
+      "args": ["tauri", "build"]
+    }
+  ]
+}
