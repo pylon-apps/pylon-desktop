@@ -1,8 +1,6 @@
-import "./App.css";
-
 function App() {
   return (
-    <div className="app">
+    <div className="h-screen">
       <h1 className="text-large font-bold">Hello world</h1>
     </div>
   );
