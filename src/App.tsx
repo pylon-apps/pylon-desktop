@@ -4,8 +4,7 @@ import Receive from "./views/Receive";
 
 function App() {
   return (
-    // TODO: add some padding in the viewport
-    <div className="h-screen flex flex-wrap flex-col items-center">
+    <div className="h-screen flex flex-wrap flex-col items-center p-2">
       {/* TODO: add icons to tabs */}
       <Tabs key="options" color="primary" radius="md" aria-label="Options">
         <Tab key="send" title="Send" className="w-full h-5/6">
