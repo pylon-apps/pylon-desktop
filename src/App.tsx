@@ -3,11 +3,14 @@ import Send from "./views/Send";
 import Receive from "./views/Receive";
 import { TbDownload, TbUpload, TbSun, TbMoon } from "react-icons/tb";
 import { ReactNode, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Theme = "light" | "dark";
 type ThemeIcon = ReactNode;
 
 function App() {
+  const { t } = useTranslation();
+
   const [theme, setTheme] = useState<Theme>("light");
   const [themeIcon, setThemeIcon] = useState<ThemeIcon>(<TbMoon />);
 
@@ -31,7 +34,7 @@ function App() {
             title={
               <div className="flex items-center space-x-2">
                 <TbUpload />
-                <span>Send</span>
+                <span>{t("app.sendTabLabel")}</span>
               </div>
             }
           >
@@ -44,7 +47,7 @@ function App() {
             title={
               <div className="flex items-center space-x-2">
                 <TbDownload />
-                <span>Receive</span>
+                <span>{t("app.receiveTabLabel")}</span>
               </div>
             }
           >
