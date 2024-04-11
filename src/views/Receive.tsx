@@ -18,7 +18,7 @@ function Receive() {
       <Spacer y={4} />
 
       <div className="flex flex-row space-x-2 w-3/5">
-        <Input label="Pylon Code" size="sm" />
+        <Input label="Pylon Code" size="sm" className="font-mono" />
         <Button color="primary" className="self-center">
           Receive
         </Button>
