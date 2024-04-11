@@ -11,7 +11,7 @@ export default {
     fontFamily: {
       "sans": ["Montserrat", "sans-serif"],
       "serif": ["serif"],
-      "mono": ["monospace"],
+      "mono": ["JetBrains Mono", "monospace"],
     }
   },
   darkMode: "class",

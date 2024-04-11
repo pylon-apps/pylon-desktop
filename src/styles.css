@@ -8,6 +8,12 @@
     src: local("Montserrat-VariableFont_wght"),
       url(assets/fonts/Montserrat-VariableFont_wght.ttf) format("truetype");
   }
+
+  @font-face {
+    font-family: "JetBrains Mono";
+    src: local("JetBrainsMono-VariableFont_wght"),
+      url(assets/fonts/JetBrainsMono-VariableFont_wght.ttf) format("truetype");
+  }
 }
 
 * {
