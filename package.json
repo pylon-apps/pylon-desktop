@@ -14,7 +14,8 @@
     "@tauri-apps/api": "^1",
     "framer-motion": "^11.0.25",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1",
