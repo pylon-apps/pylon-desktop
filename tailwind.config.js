@@ -8,6 +8,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "sans": ["Montserrat", "sans-serif"],
+      "serif": ["serif"],
+      "mono": ["monospace"],
+    }
   },
   darkMode: "class",
   plugins: [nextui()],
