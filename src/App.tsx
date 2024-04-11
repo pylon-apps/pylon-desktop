@@ -19,6 +19,7 @@ function App() {
         >
           <Send />
         </Tab>
+
         <Tab
           key="receive"
           className="w-full h-5/6"
