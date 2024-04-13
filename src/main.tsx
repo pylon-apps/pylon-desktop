@@ -6,7 +6,6 @@ import { NextUIProvider } from "@nextui-org/react";
 
 import "./i18n";
 
-// TODO: enable i18n for aria-labels
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <NextUIProvider>

@@ -27,7 +27,12 @@ function App() {
   return (
     <main className={`${theme} text-foreground bg-background`}>
       <div className="h-screen flex flex-wrap flex-col items-center p-2">
-        <Tabs key="options" color="primary" radius="md" aria-label="Options">
+        <Tabs
+          key="options"
+          color="primary"
+          radius="md"
+          aria-label={t("app.tabsAriaLabel")}
+        >
           <Tab
             key="send"
             className="w-full h-5/6"
@@ -62,7 +67,7 @@ function App() {
           disableRipple
           onClick={toggleTheme}
           className="absolute bottom-2 left-2"
-          aria-label="Toggle theme"
+          aria-label={t("app.themeToggleAriaLabel")}
         >
           {themeIcon}
         </Button>

@@ -22,11 +22,14 @@ i18n
 					app: {
 						sendTabLabel: "Send",
 						receiveTabLabel: "Receive",
+						tabsAriaLaabel: "Options",
+						themeToggleAriaLabel: "Toggle theme",
 					},
 					sendView: {
 						description: "Send File",
 						instruction: "Select the file or folder to send",
 						selectButtonLabel: "Select",
+						selectButtonAriaLabel: "Select",
 						selectFileLabel: "File",
 						selectFolderLabel: "Folder",
 					},
@@ -34,6 +37,7 @@ i18n
 						description: "Receive File",
 						instruction: "Enter the Pylon code to receive the file or folder from the sender",
 						receiveButtonLabel: "Receive",
+						receiveButtonAriaLabel: "Receive",
 						pylonCodeInputLabel: "Pylon Code",
 					}
 				}

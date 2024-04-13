@@ -26,7 +26,11 @@ function Receive() {
           size="sm"
           className="font-mono"
         />
-        <Button color="primary" className="self-center">
+        <Button
+          color="primary"
+          className="self-center"
+          aria-label={t("receiveView.receiveButtonAriaLabel")}
+        >
           {t("receiveView.receiveButtonLabel")}
         </Button>
       </div>
