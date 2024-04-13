@@ -1,11 +1,14 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import Backend from 'i18next-http-backend';
 
 i18n
 	// detect user language
 	// learn more: https://github.com/i18next/i18next-browser-languageDetector
 	.use(LanguageDetector)
+	// backend plugin to load translation files from the server fs
+	.use(Backend)
 	// pass the i18n instance to react-i18next.
 	.use(initReactI18next)
 	// init i18next
@@ -16,33 +19,6 @@ i18n
 		interpolation: {
 			escapeValue: false, // not needed for react as it escapes by default
 		},
-		resources: {
-			en: {
-				translation: {
-					app: {
-						sendTabLabel: "Send",
-						receiveTabLabel: "Receive",
-						tabsAriaLaabel: "Options",
-						themeToggleAriaLabel: "Toggle theme",
-					},
-					sendView: {
-						description: "Send File",
-						instruction: "Select the file or folder to send",
-						selectButtonLabel: "Select",
-						selectButtonAriaLabel: "Select",
-						selectFileLabel: "File",
-						selectFolderLabel: "Folder",
-					},
-					receiveView: {
-						description: "Receive File",
-						instruction: "Enter the Pylon code to receive the file or folder from the sender",
-						receiveButtonLabel: "Receive",
-						receiveButtonAriaLabel: "Receive",
-						pylonCodeInputLabel: "Pylon Code",
-					}
-				}
-			}
-		}
 	});
 
 export default i18n;
