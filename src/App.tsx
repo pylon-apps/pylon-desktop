@@ -2,8 +2,9 @@ import { Tabs, Tab, Button } from "@nextui-org/react";
 import Send from "./views/Send";
 import Receive from "./views/Receive";
 import { TbDownload, TbUpload, TbSun, TbMoon } from "react-icons/tb";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import * as bindings from "./bindings";
 
 type Theme = "light" | "dark";
 type ThemeIcon = ReactNode;
@@ -23,6 +24,18 @@ function App() {
       setThemeIcon(<TbMoon />);
     }
   };
+
+  // Bootstrap stuff for when our app launches.
+  useEffect(() => {
+    // If running in release mode, disable the right-click context menu.
+    bindings.isReleaseMode().then((yes: boolean) => {
+      if (yes) {
+        document.addEventListener("contextmenu", (ev: MouseEvent) => {
+          ev.preventDefault();
+        });
+      }
+    });
+  }, []);
 
   return (
     <main className={`${theme} text-foreground bg-background`}>
