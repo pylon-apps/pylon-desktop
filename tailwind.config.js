@@ -7,13 +7,27 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        "none": "none !important",
+      },
+    },
     fontFamily: {
       "sans": ["Montserrat", "sans-serif"],
       "serif": ["serif"],
       "mono": ["JetBrains Mono", "monospace"],
     }
   },
+  variants: {
+    extend: {
+      transitionProperty: ["children"],
+    }
+  },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("children", "& *");
+    },
+    nextui()
+  ],
 }

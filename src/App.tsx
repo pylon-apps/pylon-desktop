@@ -45,6 +45,9 @@ function App() {
           color="primary"
           radius="md"
           aria-label={t("app.tabsAriaLabel")}
+          classNames={{
+            tabContent: "children:transition-none",
+          }}
         >
           <Tab
             key="send"
@@ -79,7 +82,7 @@ function App() {
           isIconOnly
           disableRipple
           onClick={toggleTheme}
-          className="absolute bottom-2 left-2"
+          className="absolute bottom-2 left-2 transition-none"
           aria-label={t("app.themeToggleAriaLabel")}
         >
           {themeIcon}
