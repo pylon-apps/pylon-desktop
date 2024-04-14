@@ -44,11 +44,11 @@ function Settings() {
               <ModalBody>
                 {/* FIXME: disallow unselecting options */}
                 <Select
-                  label="Theme"
+                  label={t("settings.themeSelectLabel")}
                   defaultSelectedKeys={["system"]}
                   autoFocus
                   className="w-full"
-                  aria-label={t("settings.themeSelectLabel")}
+                  aria-label={t("settings.themeSelectAriaLabel")}
                 >
                   <SelectItem key="system">
                     {t("settings.themeSystem")}
@@ -61,9 +61,10 @@ function Settings() {
 
                 {/* FIXME: disallow unselecting options */}
                 <Select
-                  label="Language"
+                  label={t("settings.languageSelectLabel")}
                   defaultSelectedKeys={["en"]}
                   className="w-full"
+                  aria-label={t("settings.languageSelectAriaLabel")}
                 >
                   <SelectItem key="en">
                     {t("settings.languageEnglish")}
