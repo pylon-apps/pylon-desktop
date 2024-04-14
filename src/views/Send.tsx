@@ -34,7 +34,7 @@ function Send() {
           </Button>
         </DropdownTrigger>
 
-        <DropdownMenu aria-label={t("sendView.selectButtonAriaLabel")}>
+        <DropdownMenu aria-label={t("sendView.selectDropdownAriaLabel")}>
           <DropdownItem key="file" startContent={<TbFile />}>
             {t("sendView.selectFileLabel")}
           </DropdownItem>
