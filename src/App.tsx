@@ -1,29 +1,17 @@
-import { Tabs, Tab, Button } from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
 import Send from "./views/Send";
 import Receive from "./views/Receive";
-import { TbDownload, TbUpload, TbSun, TbMoon } from "react-icons/tb";
-import { ReactNode, useEffect, useState } from "react";
+import Settings from "./components/Settings";
+import { TbDownload, TbUpload } from "react-icons/tb";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as bindings from "./bindings";
 
 type Theme = "light" | "dark";
-type ThemeIcon = ReactNode;
 
 function App() {
   const { t } = useTranslation();
-
-  const [theme, setTheme] = useState<Theme>("light");
-  const [themeIcon, setThemeIcon] = useState<ThemeIcon>(<TbMoon />);
-
-  const toggleTheme = function () {
-    if (theme == "light") {
-      setTheme("dark");
-      setThemeIcon(<TbSun />);
-    } else {
-      setTheme("light");
-      setThemeIcon(<TbMoon />);
-    }
-  };
+  const [theme] = useState<Theme>("light");
 
   // Bootstrap stuff for when our app launches.
   useEffect(() => {
@@ -76,17 +64,7 @@ function App() {
           </Tab>
         </Tabs>
 
-        {/* TODO: make theme selection persistent */}
-        {/* TODO: autodetect initial theme from system */}
-        <Button
-          isIconOnly
-          disableRipple
-          onClick={toggleTheme}
-          className="absolute bottom-2 left-2 transition-none"
-          aria-label={t("app.themeToggleAriaLabel")}
-        >
-          {themeIcon}
-        </Button>
+        <Settings />
       </div>
     </main>
   );

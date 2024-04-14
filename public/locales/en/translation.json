@@ -2,8 +2,7 @@
   "app": {
     "sendTabLabel": "Send",
     "receiveTabLabel": "Receive",
-    "tabsAriaLaabel": "Options",
-    "themeToggleAriaLabel": "Toggle theme"
+    "tabsAriaLaabel": "Options"
   },
   "sendView": {
     "description": "Send File",
@@ -19,5 +18,19 @@
     "receiveButtonLabel": "Receive",
     "receiveButtonAriaLabel": "Receive",
     "pylonCodeInputLabel": "Pylon Code"
+  },
+  "settings": {
+    "header": "Settings",
+    "themeSelectLabel": "Select theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "languageSelectLabel": "Select language",
+    "languageEnglish": "English",
+    "languageSpanish": "Spanish",
+    "languageChinese": "Chinese",
+    "languageGerman": "German",
+    "closeButton": "Close",
+    "saveButton": "Save"
   }
 }
