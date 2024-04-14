@@ -32,7 +32,7 @@ function App() {
           key="options"
           color="primary"
           radius="md"
-          aria-label={t("app.tabsAriaLabel")}
+          aria-label={t("main.tabsAriaLabel")}
           classNames={{
             tabContent: "children:transition-none",
           }}
@@ -43,7 +43,7 @@ function App() {
             title={
               <div className="flex items-center space-x-2">
                 <TbUpload />
-                <span>{t("app.sendTabLabel")}</span>
+                <span>{t("main.sendTabLabel")}</span>
               </div>
             }
           >
@@ -56,7 +56,7 @@ function App() {
             title={
               <div className="flex items-center space-x-2">
                 <TbDownload />
-                <span>{t("app.receiveTabLabel")}</span>
+                <span>{t("main.receiveTabLabel")}</span>
               </div>
             }
           >

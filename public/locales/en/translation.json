@@ -1,5 +1,5 @@
 {
-  "app": {
+  "main": {
     "sendTabLabel": "Send",
     "receiveTabLabel": "Receive",
     "tabsAriaLabel": "Options"
