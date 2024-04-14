@@ -31,7 +31,7 @@ function Settings() {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        placement="top-center"
+        placement="top"
         backdrop="blur"
       >
         <ModalContent>
