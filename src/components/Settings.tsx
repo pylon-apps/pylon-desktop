@@ -88,16 +88,16 @@ function Settings(props: SettingsProps) {
                 >
                   {/* TODO: make this more dynamic */}
                   <SelectItem key="en" value="en">
-                    {t("settings.languageEnglish")}
+                    English
                   </SelectItem>
                   <SelectItem key="es" value="es">
-                    {t("settings.languageSpanish")}
+                    Español
                   </SelectItem>
                   <SelectItem key="cn" value="cn">
-                    {t("settings.languageChinese")}
+                    中国人
                   </SelectItem>
                   <SelectItem key="de" value="de">
-                    {t("settings.languageGerman")}
+                    Deutsch
                   </SelectItem>
                 </Select>
               </ModalBody>

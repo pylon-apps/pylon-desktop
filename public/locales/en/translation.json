@@ -27,10 +27,6 @@
     "themeDark": "Dark",
     "languageSelectLabel": "Language",
     "languageSelectAriaLabel": "Select language",
-    "languageEnglish": "English",
-    "languageSpanish": "Spanish",
-    "languageChinese": "Chinese",
-    "languageGerman": "German",
     "closeButton": "Close",
     "saveButton": "Save"
   }
