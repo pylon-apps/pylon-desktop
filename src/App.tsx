@@ -1,17 +1,16 @@
 import { Tabs, Tab } from "@nextui-org/react";
 import Send from "./views/Send";
 import Receive from "./views/Receive";
-import Settings from "./components/Settings";
+import Settings, { Theme, Lang } from "./components/Settings";
 import { TbDownload, TbUpload } from "react-icons/tb";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as bindings from "./bindings";
 
-type Theme = "light" | "dark";
-
 function App() {
-  const { t } = useTranslation();
-  const [theme] = useState<Theme>("light");
+  const { t, i18n } = useTranslation();
+  const [theme, setTheme] = useState<Theme>("system");
+  const [lang, setLang] = useState<Lang>("en");
 
   // Bootstrap stuff for when our app launches.
   useEffect(() => {
@@ -23,7 +22,25 @@ function App() {
         });
       }
     });
+
+    // Set initial language.
+    // TODO: set initial language based on detected locale, rather than force-setting English.
+    i18n.changeLanguage(lang);
   }, []);
+
+  // TODO: handle "system" theme by actually detecting system preference.
+  const onThemeChange = function (theme: React.ChangeEvent<HTMLSelectElement>) {
+    if (theme.target.value == "system") {
+      setTheme("light");
+    }
+
+    setTheme(theme.target.value as Theme);
+  };
+
+  const onLangChange = function (lang: React.ChangeEvent<HTMLSelectElement>) {
+    i18n.changeLanguage(lang.target.value);
+    setLang(lang.target.value as Lang);
+  };
 
   return (
     <main className={`${theme} text-foreground bg-background`}>
@@ -64,7 +81,12 @@ function App() {
           </Tab>
         </Tabs>
 
-        <Settings />
+        <Settings
+          defaultTheme={theme}
+          onThemeChange={onThemeChange}
+          defaultLang={lang}
+          onLangChange={onLangChange}
+        />
       </div>
     </main>
   );

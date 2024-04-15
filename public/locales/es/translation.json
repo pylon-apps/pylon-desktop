@@ -1,0 +1,37 @@
+{
+  "main": {
+    "sendTabLabel": "Enviar",
+    "receiveTabLabel": "Recibir",
+    "tabsAriaLabel": "Opciones"
+  },
+  "sendView": {
+    "description": "Enviar archivo",
+    "instruction": "Seleccione el archivo o carpeta para enviar",
+    "selectButtonLabel": "Seleccionar",
+    "selectDropdownAriaLabel": "Seleccionar",
+    "selectFileLabel": "Archivo",
+    "selectFolderLabel": "Carpeta"
+  },
+  "receiveView": {
+    "description": "Recibir archivo",
+    "instruction": "Ingrese el código de Pylon para recibir el archivo o carpeta del remitente",
+    "receiveButtonLabel": "Recibir",
+    "pylonCodeInputLabel": "Código de pilón"
+  },
+  "settings": {
+    "header": "Ajustes",
+    "themeSelectLabel": "Tema",
+    "themeSelectAriaLabel": "Seleccione el tema",
+    "themeSystem": "Sistema",
+    "themeLight": "Ligero",
+    "themeDark": "Oscuro",
+    "languageSelectLabel": "Idioma",
+    "languageSelectAriaLabel": "Seleccione el idioma",
+    "languageEnglish": "Inglés",
+    "languageSpanish": "Español",
+    "languageChinese": "Chino",
+    "languageGerman": "Alemán",
+    "closeButton": "Cerca",
+    "saveButton": "Ahorrar"
+  }
+}

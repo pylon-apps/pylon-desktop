@@ -1,0 +1,37 @@
+{
+  "main": {
+    "sendTabLabel": "发送",
+    "receiveTabLabel": "收到",
+    "tabsAriaLabel": "选项"
+  },
+  "sendView": {
+    "description": "发送文件",
+    "instruction": "选择要发送的文件或文件夹",
+    "selectButtonLabel": "选择",
+    "selectDropdownAriaLabel": "选择",
+    "selectFileLabel": "文件",
+    "selectFolderLabel": "文件夹"
+  },
+  "receiveView": {
+    "description": "接收文件",
+    "instruction": "输入 Pylon 代码以接收发件人发送的文件或文件夹",
+    "receiveButtonLabel": "收到",
+    "pylonCodeInputLabel": "塔代码"
+  },
+  "settings": {
+    "header": "设置",
+    "themeSelectLabel": "主题",
+    "themeSelectAriaLabel": "选择主题",
+    "themeSystem": "系统",
+    "themeLight": "光",
+    "themeDark": "黑暗的",
+    "languageSelectLabel": "语言",
+    "languageSelectAriaLabel": "选择语言",
+    "languageEnglish": "英语",
+    "languageSpanish": "西班牙语",
+    "languageChinese": "中国人",
+    "languageGerman": "德语",
+    "closeButton": "关闭",
+    "saveButton": "节省"
+  }
+}

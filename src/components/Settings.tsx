@@ -12,9 +12,26 @@ import {
 import { TbSettings } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 
-function Settings() {
+export type Theme = "system" | "light" | "dark";
+export type Lang = "en" | "es" | "cn" | "de";
+
+// TODO: docstring, once properties are finalized.
+interface SettingsProps {
+  defaultTheme?: Theme;
+  onThemeChange?: (theme: React.ChangeEvent<HTMLSelectElement>) => void;
+  defaultLang?: Lang;
+  onLangChange?: (lang: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+function Settings(props: SettingsProps) {
   const { t } = useTranslation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {
+    defaultTheme,
+    onThemeChange,
+    defaultLang,
+    onLangChange: onLanguageChange,
+  } = props;
 
   return (
     <>
@@ -27,7 +44,7 @@ function Settings() {
         <TbSettings />
       </Button>
 
-      {/* TODO: make settings actually take effect */}
+      {/* TODO: make settings persist between sessions */}
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
@@ -45,10 +62,11 @@ function Settings() {
                 {/* FIXME: disallow unselecting options */}
                 <Select
                   label={t("settings.themeSelectLabel")}
-                  defaultSelectedKeys={["system"]}
+                  defaultSelectedKeys={[defaultTheme || "system"]}
                   autoFocus
                   className="w-full"
                   aria-label={t("settings.themeSelectAriaLabel")}
+                  onChange={onThemeChange}
                 >
                   <SelectItem key="system">
                     {t("settings.themeSystem")}
@@ -60,22 +78,25 @@ function Settings() {
                 </Select>
 
                 {/* FIXME: disallow unselecting options */}
+                {/* TODO: default to system locale instead of English */}
                 <Select
                   label={t("settings.languageSelectLabel")}
-                  defaultSelectedKeys={["en"]}
+                  defaultSelectedKeys={[defaultLang || "en"]}
                   className="w-full"
                   aria-label={t("settings.languageSelectAriaLabel")}
+                  onChange={onLanguageChange}
                 >
-                  <SelectItem key="en">
+                  {/* TODO: make this more dynamic */}
+                  <SelectItem key="en" value="en">
                     {t("settings.languageEnglish")}
                   </SelectItem>
-                  <SelectItem key="es">
+                  <SelectItem key="es" value="es">
                     {t("settings.languageSpanish")}
                   </SelectItem>
-                  <SelectItem key="cn">
+                  <SelectItem key="cn" value="cn">
                     {t("settings.languageChinese")}
                   </SelectItem>
-                  <SelectItem key="de">
+                  <SelectItem key="de" value="de">
                     {t("settings.languageGerman")}
                   </SelectItem>
                 </Select>

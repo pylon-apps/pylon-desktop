@@ -1,0 +1,37 @@
+{
+  "main": {
+    "sendTabLabel": "Schicken",
+    "receiveTabLabel": "Erhalten",
+    "tabsAriaLabel": "Optionen"
+  },
+  "sendView": {
+    "description": "Datei senden",
+    "instruction": "Wählen Sie die zu sendende Datei oder den Ordner aus",
+    "selectButtonLabel": "Wählen",
+    "selectDropdownAriaLabel": "Wählen",
+    "selectFileLabel": "Datei",
+    "selectFolderLabel": "Ordner"
+  },
+  "receiveView": {
+    "description": "Datei empfangen",
+    "instruction": "Geben Sie den Pylon-Code ein, um die Datei oder den Ordner vom Absender zu erhalten",
+    "receiveButtonLabel": "Erhalten",
+    "pylonCodeInputLabel": "Pylon-Code"
+  },
+  "settings": {
+    "header": "Einstellungen",
+    "themeSelectLabel": "Thema",
+    "themeSelectAriaLabel": "Thema wählen",
+    "themeSystem": "System",
+    "themeLight": "Licht",
+    "themeDark": "Dunkel",
+    "languageSelectLabel": "Sprache",
+    "languageSelectAriaLabel": "Sprache auswählen",
+    "languageEnglish": "Englisch",
+    "languageSpanish": "Spanisch",
+    "languageChinese": "Chinesisch",
+    "languageGerman": "Deutsch",
+    "closeButton": "Schließen",
+    "saveButton": "Speichern"
+  }
+}
