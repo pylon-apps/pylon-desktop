@@ -23,6 +23,7 @@
     "themeSelectLabel": "主题",
     "themeSelectAriaLabel": "选择主题",
     "themeSystem": "系统",
+    "themeSystemDescription": "跟随系统首选项",
     "themeLight": "光",
     "themeDark": "黑暗的",
     "languageSelectLabel": "语言",

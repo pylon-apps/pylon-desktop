@@ -23,6 +23,7 @@
     "themeSelectLabel": "Tema",
     "themeSelectAriaLabel": "Seleccione el tema",
     "themeSystem": "Sistema",
+    "themeSystemDescription": "Utilice el tema del sistema operativo",
     "themeLight": "Ligero",
     "themeDark": "Oscuro",
     "languageSelectLabel": "Idioma",

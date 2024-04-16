@@ -23,6 +23,7 @@
     "themeSelectLabel": "Thema",
     "themeSelectAriaLabel": "Thema wählen",
     "themeSystem": "System",
+    "themeSystemDescription": "Folgt dem Systemthema",
     "themeLight": "Licht",
     "themeDark": "Dunkel",
     "languageSelectLabel": "Sprache",

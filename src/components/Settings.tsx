@@ -65,7 +65,10 @@ function Settings(props: SettingsProps) {
                   onChange={onThemeChange}
                   startContent={<TbPaint />}
                 >
-                  <SelectItem key="system">
+                  <SelectItem
+                    key="system"
+                    description={t("settings.themeSystemDescription")}
+                  >
                     {t("settings.themeSystem")}
                   </SelectItem>
                   <SelectItem key="light">
