@@ -34,6 +34,7 @@ function App() {
     }
   }, []);
 
+  // TODO: watch for changes to system theme.
   const detectSystemTheme = function (): Theme {
     if (
       window.matchMedia &&
