@@ -27,12 +27,7 @@ interface SettingsProps {
 function Settings(props: SettingsProps) {
   const { t } = useTranslation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {
-    defaultTheme,
-    onThemeChange,
-    defaultLang,
-    onLangChange: onLanguageChange,
-  } = props;
+  const { defaultTheme, onThemeChange, defaultLang, onLangChange } = props;
 
   return (
     <>
@@ -85,7 +80,7 @@ function Settings(props: SettingsProps) {
                   disallowEmptySelection
                   className="w-full"
                   aria-label={t("settings.languageSelectAriaLabel")}
-                  onChange={onLanguageChange}
+                  onChange={onLangChange}
                 >
                   {/* TODO: make this more dynamic */}
                   <SelectItem key="en" value="en">
