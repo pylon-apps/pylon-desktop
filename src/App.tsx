@@ -83,7 +83,7 @@ function App() {
               </div>
             }
           >
-            <Send />
+            <Send currentTheme={theme} />
           </Tab>
 
           <Tab
@@ -101,7 +101,8 @@ function App() {
         </Tabs>
 
         <Settings
-          defaultTheme={themeChoice}
+          defaultThemeChoice={themeChoice}
+          currentTheme={theme}
           onThemeChange={onThemeChange}
           defaultLang={lang}
           onLangChange={onLangChange}
