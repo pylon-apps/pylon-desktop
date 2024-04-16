@@ -1,7 +1,7 @@
 import { Tabs, Tab } from "@nextui-org/react";
 import Send from "./views/Send";
 import Receive from "./views/Receive";
-import Settings, { Theme, Lang } from "./components/Settings";
+import Settings, { Theme, ThemeChoice, Lang } from "./components/Settings";
 import { TbDownload, TbUpload } from "react-icons/tb";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,7 +9,8 @@ import * as bindings from "./bindings";
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme>("light");
+  const [themeChoice, setThemeChoice] = useState<ThemeChoice>("system");
   const [lang, setLang] = useState<Lang>("en");
 
   // Bootstrap stuff for when our app launches.
@@ -26,15 +27,32 @@ function App() {
     // Set initial language.
     // TODO: set initial language based on detected locale, rather than force-setting English.
     i18n.changeLanguage(lang);
+
+    // Set initial theme.
+    if (themeChoice == "system") {
+      setTheme(detectSystemTheme());
+    }
   }, []);
 
-  // TODO: handle "system" theme by actually detecting system preference.
+  const detectSystemTheme = function (): Theme {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      return "dark";
+    } else {
+      return "light";
+    }
+  };
+
   const onThemeChange = function (theme: React.ChangeEvent<HTMLSelectElement>) {
     if (theme.target.value == "system") {
-      setTheme("light");
+      setTheme(detectSystemTheme());
+    } else {
+      setTheme(theme.target.value as Theme);
     }
 
-    setTheme(theme.target.value as Theme);
+    setThemeChoice(theme.target.value as Theme);
   };
 
   const onLangChange = function (lang: React.ChangeEvent<HTMLSelectElement>) {
@@ -82,7 +100,7 @@ function App() {
         </Tabs>
 
         <Settings
-          defaultTheme={theme}
+          defaultTheme={themeChoice}
           onThemeChange={onThemeChange}
           defaultLang={lang}
           onLangChange={onLangChange}

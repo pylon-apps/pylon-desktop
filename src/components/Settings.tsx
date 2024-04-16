@@ -12,12 +12,13 @@ import {
 import { TbSettings } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 
-export type Theme = "system" | "light" | "dark";
+export type Theme = "light" | "dark";
+export type ThemeChoice = "system" | "light" | "dark";
 export type Lang = "en" | "es" | "cn" | "de";
 
 // TODO: docstring, once properties are finalized.
 interface SettingsProps {
-  defaultTheme?: Theme;
+  defaultTheme?: ThemeChoice;
   onThemeChange?: (theme: React.ChangeEvent<HTMLSelectElement>) => void;
   defaultLang?: Lang;
   onLangChange?: (lang: React.ChangeEvent<HTMLSelectElement>) => void;
