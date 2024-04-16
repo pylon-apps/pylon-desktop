@@ -60,10 +60,10 @@ function Settings(props: SettingsProps) {
               </ModalHeader>
 
               <ModalBody>
-                {/* FIXME: disallow unselecting options */}
                 <Select
                   label={t("settings.themeSelectLabel")}
                   defaultSelectedKeys={[defaultTheme || "system"]}
+                  disallowEmptySelection
                   autoFocus
                   className="w-full"
                   aria-label={t("settings.themeSelectAriaLabel")}
@@ -78,11 +78,11 @@ function Settings(props: SettingsProps) {
                   <SelectItem key="dark">{t("settings.themeDark")}</SelectItem>
                 </Select>
 
-                {/* FIXME: disallow unselecting options */}
                 {/* TODO: default to system locale instead of English */}
                 <Select
                   label={t("settings.languageSelectLabel")}
                   defaultSelectedKeys={[defaultLang || "en"]}
+                  disallowEmptySelection
                   className="w-full"
                   aria-label={t("settings.languageSelectAriaLabel")}
                   onChange={onLanguageChange}
