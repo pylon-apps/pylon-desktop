@@ -9,7 +9,7 @@ import {
   SelectItem,
   useDisclosure,
 } from "@nextui-org/react";
-import { TbSettings } from "react-icons/tb";
+import { TbLanguage, TbPaint, TbSettings } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 
 export type Theme = "light" | "dark";
@@ -63,6 +63,7 @@ function Settings(props: SettingsProps) {
                   className="w-full"
                   aria-label={t("settings.themeSelectAriaLabel")}
                   onChange={onThemeChange}
+                  startContent={<TbPaint />}
                 >
                   <SelectItem key="system">
                     {t("settings.themeSystem")}
@@ -81,6 +82,7 @@ function Settings(props: SettingsProps) {
                   className="w-full"
                   aria-label={t("settings.languageSelectAriaLabel")}
                   onChange={onLangChange}
+                  startContent={<TbLanguage />}
                 >
                   {/* TODO: make this more dynamic */}
                   <SelectItem key="en" value="en">
