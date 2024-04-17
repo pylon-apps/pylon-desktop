@@ -11,6 +11,7 @@
     "selectDropdownAriaLabel": "Select",
     "selectFileLabel": "File",
     "selectFolderLabel": "Folder",
+    "selectFolderDescription": "Sending folders is currently not supported",
     "spinnerLabel": "Generating code...",
     "cancelButtonLabel": "Cancel"
   },

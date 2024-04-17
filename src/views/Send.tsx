@@ -62,12 +62,19 @@ function Send() {
         </Button>
       </DropdownTrigger>
 
-      <DropdownMenu aria-label={t("sendView.selectDropdownAriaLabel")}>
+      <DropdownMenu
+        disabledKeys={["folder"]}
+        aria-label={t("sendView.selectDropdownAriaLabel")}
+      >
         <DropdownItem key="file" startContent={<TbFile />} onPress={selectFile}>
           {t("sendView.selectFileLabel")}
         </DropdownItem>
 
-        <DropdownItem key="folder" startContent={<TbFolder />}>
+        <DropdownItem
+          key="folder"
+          startContent={<TbFolder />}
+          description={t("sendView.selectFolderDescription")}
+        >
           {t("sendView.selectFolderLabel")}
         </DropdownItem>
       </DropdownMenu>

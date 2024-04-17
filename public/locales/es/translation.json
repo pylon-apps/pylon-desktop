@@ -11,6 +11,7 @@
     "selectDropdownAriaLabel": "Seleccionar",
     "selectFileLabel": "Archivo",
     "selectFolderLabel": "Carpeta",
+    "selectFolderDescription": "Actualmente no se admite el envío de carpetas",
     "spinnerLabel": "Generando código...",
     "cancelButtonLabel": "Cancelar"
   },

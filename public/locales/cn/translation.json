@@ -11,6 +11,7 @@
     "selectDropdownAriaLabel": "选择",
     "selectFileLabel": "文件",
     "selectFolderLabel": "文件夹",
+    "selectFolderDescription": "目前不支持发送文件夹",
     "spinnerLabel": "正在生成代码...",
     "cancelButtonLabel": "取消"
   },
