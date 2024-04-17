@@ -10,7 +10,9 @@
     "selectButtonLabel": "Select",
     "selectDropdownAriaLabel": "Select",
     "selectFileLabel": "File",
-    "selectFolderLabel": "Folder"
+    "selectFolderLabel": "Folder",
+    "spinnerLabel": "Generating code...",
+    "cancelButtonLabel": "Cancel"
   },
   "receiveView": {
     "description": "Receive File",

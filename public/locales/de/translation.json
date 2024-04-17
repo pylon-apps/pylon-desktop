@@ -10,7 +10,9 @@
     "selectButtonLabel": "Wählen",
     "selectDropdownAriaLabel": "Wählen",
     "selectFileLabel": "Datei",
-    "selectFolderLabel": "Ordner"
+    "selectFolderLabel": "Ordner",
+    "spinnerLabel": "Code wird generiert...",
+    "cancelButtonLabel": "Stornieren"
   },
   "receiveView": {
     "description": "Datei empfangen",

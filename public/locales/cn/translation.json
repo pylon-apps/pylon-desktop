@@ -10,7 +10,9 @@
     "selectButtonLabel": "选择",
     "selectDropdownAriaLabel": "选择",
     "selectFileLabel": "文件",
-    "selectFolderLabel": "文件夹"
+    "selectFolderLabel": "文件夹",
+    "spinnerLabel": "正在生成代码...",
+    "cancelButtonLabel": "取消"
   },
   "receiveView": {
     "description": "接收文件",
