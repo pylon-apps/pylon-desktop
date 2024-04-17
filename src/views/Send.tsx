@@ -55,7 +55,7 @@ function Send() {
   };
 
   const selectView = (
-    <Dropdown>
+    <Dropdown backdrop="blur">
       <DropdownTrigger>
         <Button color="primary" endContent={<TbChevronDown />}>
           {t("sendView.selectButtonLabel")}
