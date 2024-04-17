@@ -8,15 +8,9 @@ import {
 } from "@nextui-org/react";
 import { TbChevronDown, TbFile, TbFolder, TbUpload } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
-import { Theme } from "../components/Settings";
 
-interface SendProps {
-  currentTheme: Theme;
-}
-
-function Send(props: SendProps) {
+function Send() {
   const { t } = useTranslation();
-  const { currentTheme } = props;
 
   return (
     <div className="flex flex-col justify-center items-center h-full space-y-1">
@@ -33,9 +27,7 @@ function Send(props: SendProps) {
 
       <Spacer y={4} />
 
-      <Dropdown
-        className={`${currentTheme} text-foreground children:transition-none`}
-      >
+      <Dropdown>
         <DropdownTrigger>
           <Button color="primary" endContent={<TbChevronDown />}>
             {t("sendView.selectButtonLabel")}

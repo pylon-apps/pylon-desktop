@@ -19,7 +19,6 @@ export type Lang = "en" | "es" | "cn" | "de";
 // TODO: docstring, once properties are finalized.
 interface SettingsProps {
   defaultThemeChoice?: ThemeChoice;
-  currentTheme: Theme;
   onThemeChange?: (theme: React.ChangeEvent<HTMLSelectElement>) => void;
   defaultLang?: Lang;
   onLangChange?: (lang: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -28,13 +27,8 @@ interface SettingsProps {
 function Settings(props: SettingsProps) {
   const { t } = useTranslation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {
-    defaultThemeChoice,
-    currentTheme,
-    onThemeChange,
-    defaultLang,
-    onLangChange,
-  } = props;
+  const { defaultThemeChoice, onThemeChange, defaultLang, onLangChange } =
+    props;
 
   return (
     <>
@@ -53,7 +47,7 @@ function Settings(props: SettingsProps) {
         onOpenChange={onOpenChange}
         placement="top"
         backdrop="blur"
-        className={`${currentTheme} text-foreground`}
+        className="transition-none children:transition-none"
       >
         <ModalContent>
           {(onClose) => (
@@ -63,13 +57,13 @@ function Settings(props: SettingsProps) {
               </ModalHeader>
 
               <ModalBody>
-                {/* FIXME: ensure items follow selected theme */}
+                {/* FIXME: disable color transition for start content */}
                 <Select
                   label={t("settings.themeSelectLabel")}
                   defaultSelectedKeys={[defaultThemeChoice || "system"]}
                   disallowEmptySelection
                   autoFocus
-                  className={`${currentTheme} w-full children:transition-none`}
+                  className={"w-full"}
                   aria-label={t("settings.themeSelectAriaLabel")}
                   onChange={onThemeChange}
                   startContent={<TbPaint />}
@@ -86,13 +80,13 @@ function Settings(props: SettingsProps) {
                   <SelectItem key="dark">{t("settings.themeDark")}</SelectItem>
                 </Select>
 
-                {/* FIXME: ensure items follow selected theme */}
+                {/* FIXME: disable color transition for start content */}
                 {/* TODO: default to system locale instead of English */}
                 <Select
                   label={t("settings.languageSelectLabel")}
                   defaultSelectedKeys={[defaultLang || "en"]}
                   disallowEmptySelection
-                  className={`${currentTheme} w-full children:transition-none`}
+                  className={"w-full"}
                   aria-label={t("settings.languageSelectAriaLabel")}
                   onChange={onLangChange}
                   startContent={<TbLanguage />}

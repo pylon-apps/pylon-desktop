@@ -34,6 +34,18 @@ function App() {
     }
   }, []);
 
+  // Handle theme changes.
+  useEffect(() => {
+    // Add theme class to the body element.
+    document.body.classList.add(theme);
+    document.body.classList.add("text-foreground");
+
+    return () => {
+      document.body.classList.remove(theme);
+      document.body.classList.remove("text-foreground");
+    };
+  }, [theme]);
+
   // TODO: watch for changes to system theme.
   const detectSystemTheme = function (): Theme {
     if (
@@ -83,7 +95,7 @@ function App() {
               </div>
             }
           >
-            <Send currentTheme={theme} />
+            <Send />
           </Tab>
 
           <Tab
@@ -102,7 +114,6 @@ function App() {
 
         <Settings
           defaultThemeChoice={themeChoice}
-          currentTheme={theme}
           onThemeChange={onThemeChange}
           defaultLang={lang}
           onLangChange={onLangChange}
