@@ -15,13 +15,19 @@ function App() {
 
   // Bootstrap stuff for when our app launches.
   useEffect(() => {
-    // If running in release mode, disable the right-click context menu.
+    // If running in release mode, disable the right-click context menu, devtools and page refresh shortcut keys.
     bindings
       .isReleaseMode()
       .then((yes: boolean) => {
         if (yes) {
           document.addEventListener("contextmenu", (ev: MouseEvent) => {
             ev.preventDefault();
+          });
+
+          document.addEventListener("keydown", (ev: KeyboardEvent) => {
+            if (ev.key === "F12" || (ev.key === "r" && ev.ctrlKey)) {
+              ev.preventDefault();
+            }
           });
         }
       })
