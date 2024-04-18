@@ -1,8 +1,13 @@
 import { Button, Card, CardBody, CardFooter, Spinner } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 
-function Send_GenvView() {
+interface Send_GenvViewProps {
+  cancelHandler: () => void;
+}
+
+function Send_GenvView(props: Send_GenvViewProps) {
   const { t } = useTranslation();
+  const { cancelHandler } = props;
 
   return (
     <Card
@@ -20,7 +25,12 @@ function Send_GenvView() {
       </CardBody>
 
       <CardFooter className="flex flex-col">
-        <Button color="danger" variant="flat" className="self-center">
+        <Button
+          color="danger"
+          variant="flat"
+          onClick={cancelHandler}
+          className="self-center"
+        >
           {t("sendView.cancelButtonLabel")}
         </Button>
       </CardFooter>

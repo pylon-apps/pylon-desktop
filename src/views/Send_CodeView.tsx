@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 
 interface Send_CodeViewProps {
   code: string;
+  cancelHandler: () => void;
 }
 
 function Send_CodeView(props: Send_CodeViewProps) {
   const { t } = useTranslation();
-  const { code } = props;
+  const { code, cancelHandler } = props;
 
   return (
     <Card
@@ -23,7 +24,12 @@ function Send_CodeView(props: Send_CodeViewProps) {
       </CardBody>
 
       <CardFooter className="flex flex-col">
-        <Button color="danger" variant="flat" className="self-center">
+        <Button
+          color="danger"
+          variant="flat"
+          onClick={cancelHandler}
+          className="self-center"
+        >
           {t("sendView.cancelButtonLabel")}
         </Button>
       </CardFooter>

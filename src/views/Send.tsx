@@ -11,12 +11,19 @@ import Send_CodeView from "./Send_CodeView";
 function Send() {
   const { t } = useTranslation();
 
+  // FIXME: hitting cancel in the gen view will sometimes still show the code view.
+  const cancelHandler = () => {
+    setCurrentView(<Send_SelectView selectFileHandler={selectFileHandler} />);
+  };
+
   const getCode = async () => {
     // TODO: parameterize code length.
     try {
       const code = await bindings.genCode(2);
       console.log(code);
-      setCurrentView(<Send_CodeView code={code} />);
+      setCurrentView(
+        <Send_CodeView code={code} cancelHandler={cancelHandler} />
+      );
     } catch (e) {
       console.error(e);
     }
@@ -30,7 +37,7 @@ function Send() {
       });
 
       if (selected !== null) {
-        setCurrentView(<Send_GenView />);
+        setCurrentView(<Send_GenView cancelHandler={cancelHandler} />);
 
         try {
           await getCode();
