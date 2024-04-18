@@ -6,14 +6,18 @@
   },
   "sendView": {
     "description": "发送文件",
+    "cancelButtonLabel": "取消"
+  },
+  "sendSelectView": {
     "instruction": "选择要发送的文件或文件夹",
     "selectButtonLabel": "选择",
     "selectDropdownAriaLabel": "选择",
     "selectFileLabel": "文件",
     "selectFolderLabel": "文件夹",
-    "selectFolderDescription": "目前不支持发送文件夹",
-    "spinnerLabel": "正在生成代码...",
-    "cancelButtonLabel": "取消"
+    "selectFolderDescription": "目前不支持发送文件夹"
+  },
+  "sendGenView": {
+    "spinnerLabel": "正在生成代码..."
   },
   "receiveView": {
     "description": "接收文件",

@@ -6,14 +6,18 @@
   },
   "sendView": {
     "description": "Send File",
+    "cancelButtonLabel": "Cancel"
+  },
+  "sendSelectView": {
     "instruction": "Select the file or folder to send",
     "selectButtonLabel": "Select",
     "selectDropdownAriaLabel": "Select",
     "selectFileLabel": "File",
     "selectFolderLabel": "Folder",
-    "selectFolderDescription": "Sending folders is currently not supported",
-    "spinnerLabel": "Generating code...",
-    "cancelButtonLabel": "Cancel"
+    "selectFolderDescription": "Sending folders is currently not supported"
+  },
+  "sendGenView": {
+    "spinnerLabel": "Generating code..."
   },
   "receiveView": {
     "description": "Receive File",

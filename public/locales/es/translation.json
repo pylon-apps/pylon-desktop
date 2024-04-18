@@ -6,14 +6,18 @@
   },
   "sendView": {
     "description": "Enviar archivo",
+    "cancelButtonLabel": "Cancelar"
+  },
+  "sendSelectView": {
     "instruction": "Seleccione el archivo o carpeta para enviar",
     "selectButtonLabel": "Seleccionar",
     "selectDropdownAriaLabel": "Seleccionar",
     "selectFileLabel": "Archivo",
     "selectFolderLabel": "Carpeta",
-    "selectFolderDescription": "Actualmente no se admite el envío de carpetas",
-    "spinnerLabel": "Generando código...",
-    "cancelButtonLabel": "Cancelar"
+    "selectFolderDescription": "Actualmente no se admite el envío de carpetas"
+  },
+  "sendGenView": {
+    "spinnerLabel": "Generando código..."
   },
   "receiveView": {
     "description": "Recibir archivo",
