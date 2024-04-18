@@ -16,17 +16,24 @@ function App() {
   // Bootstrap stuff for when our app launches.
   useEffect(() => {
     // If running in release mode, disable the right-click context menu.
-    bindings.isReleaseMode().then((yes: boolean) => {
-      if (yes) {
-        document.addEventListener("contextmenu", (ev: MouseEvent) => {
-          ev.preventDefault();
-        });
-      }
-    });
+    bindings
+      .isReleaseMode()
+      .then((yes: boolean) => {
+        if (yes) {
+          document.addEventListener("contextmenu", (ev: MouseEvent) => {
+            ev.preventDefault();
+          });
+        }
+      })
+      .catch((err: Error) => {
+        console.error(err);
+      });
 
     // Set initial language.
     // TODO: set initial language based on detected locale, rather than force-setting English.
-    i18n.changeLanguage(lang);
+    i18n.changeLanguage(lang).catch((err: Error) => {
+      console.error(err);
+    });
 
     // Set initial theme.
     if (themeChoice == "system") {
