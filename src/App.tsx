@@ -42,7 +42,7 @@ function App() {
     });
 
     // Set initial theme.
-    if (themeChoice == "system") {
+    if (themeChoice === "system") {
       setTheme(detectSystemTheme());
     }
   }, []);
