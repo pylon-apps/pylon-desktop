@@ -15,9 +15,10 @@ fn is_release_mode() -> bool {
 ///
 /// * `code_length` - The length of the code to generate.
 #[tauri::command]
-async fn gen_code(code_length: usize) -> Result<String, PylonError> {
+async fn gen_code(code_length: usize, app: tauri::AppHandle) -> Result<String, PylonError> {
+    let config = app.config();
     let mut pylon = PylonBuilder::default()
-        .id("com.pylon-apps.pylon-desktop".into())
+        .id(config.tauri.bundle.identifier.clone())
         .build()?;
     let code = pylon.gen_code(code_length).await?;
 
