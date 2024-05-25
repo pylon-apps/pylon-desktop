@@ -6,7 +6,7 @@ import { invoke } from "@tauri-apps/api";
  *
  * @export
  * @async
- * @returns {Promise<boolean>}
+ * @returns {Promise<boolean>} Resolves to `true` if we're in "release" mode, `false` otherwise.
  */
 export async function isReleaseMode(): Promise<boolean> {
 	return await invoke("is_release_mode");
